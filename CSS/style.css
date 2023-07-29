@@ -60,6 +60,7 @@ body {
 .header .logo {
     font-size: 4rem;
     font-family: 'Tilt Prism', cursive;
+    text-shadow: 2px 3px rgb(22, 21, 21);
 }
 
 .header .navaction {
