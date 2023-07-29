@@ -60,7 +60,9 @@ body {
 .header .logo {
     font-size: 4rem;
     font-family: 'Tilt Prism', cursive;
-    text-shadow: 2px 3px rgb(22, 21, 21);
+    <<<<<<< HEAD text-shadow: 2px 3px rgb(22, 21, 21);
+    =======text-shadow: 2px 3px black;
+    >>>>>>>ba48f38494d7c876cc6f621ce06905589763db30
 }
 
 .header .navaction {
