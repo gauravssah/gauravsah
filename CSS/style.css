@@ -556,6 +556,17 @@ body {
     overflow: hidden;
 }
 
+.projectimagebox {
+    width: 150%;
+
+}
+
+.projectimagebox img {
+    width: 100px;
+
+
+}
+
 .myproject::after {
     content: "";
     display: block;
@@ -584,13 +595,13 @@ body {
 }
 
 .projectDetails .clickBtn {
-    background: rgba(0, 0, 0, 0.864);
+    background: rgba(148, 148, 148, 0.576);
     border: none;
     padding: 0.5em 1em;
 }
 
 .projectDetails .clickBtn a {
-    color: rgb(12 192 223);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 2.5rem;
     font-family: 'Lato', sans-serif;
@@ -618,9 +629,58 @@ body {
     text-transform: uppercase;
 }
 
+.detailBox .open {
+    font-size: 2.5rem;
+    padding: 0.2em 0.5em;
+    margin-top: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.detailBox .GitHub a {
+    /* background-color: rgb(255, 255, 255); */
+    color: rgb(0, 0, 0);
+    border: none;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.detailBox .GitHub:hover {
+    opacity: 0.8;
+}
+
+.detailBox .Live {
+    background-color: rgb(12 192 223);
+    color: white;
+    border: none;
+    margin-left: 1rem;
+}
+
+.detailBox .Live a {
+    color: white;
+    border: none;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.detailBox .Live .fa-globe {
+    color: rgb(255, 0, 0);
+
+}
+
+.detailBox .Live:hover {
+    opacity: 0.8;
+}
+
 .myproject:hover .detailBox {
     left: 50%;
     opacity: 1;
+}
+
+.myproject:hover .projectDetails {
+    display: none;
+    transition: all 0.4s ease-out;
 }
 
 #projects .container .num1 {
