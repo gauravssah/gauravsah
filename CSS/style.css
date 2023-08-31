@@ -657,7 +657,7 @@ body {
 }
 
 .detailBox .Live a {
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     margin-left: 1rem;
     text-decoration: none;
@@ -665,7 +665,7 @@ body {
 }
 
 .detailBox .Live .fa-globe {
-    color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
 
 }
 
