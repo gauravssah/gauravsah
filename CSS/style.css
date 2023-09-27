@@ -26,6 +26,7 @@ html {
 
 body {
     scroll-behavior: smooth;
+    /* overflow: hidden; */
     overflow-x: hidden;
 }
 
@@ -1419,10 +1420,11 @@ footer .footer .footerContact .fa-brands:hover {
         background-color: rgba(33, 49, 52, 0.84);
         right: 0;
         top: -35px;
-        width: 80vw;
+        width: 100vw;
         height: 110vh;
         z-index: -1;
         transform: translate(80%);
+        text-align: center;
     }
 
     .showdisplay .hamberger .fa-xmark {
@@ -1658,7 +1660,9 @@ footer .footer .footerContact .fa-brands:hover {
         width: 100vw;
         height: 105vh;
         z-index: -5;
+        text-align: center;
         transform: translate(80%);
+
     }
 
     .showdisplay .hamberger .fa-xmark {

@@ -31,7 +31,8 @@ window.addEventListener("scroll", showScrolling)
 showScrolling()
 
 function showScrolling() {
-  let fullWindoHeight = window.innerHeight / 5 * 4;
+  // let fullWindoHeight = window.innerHeight / 5 * 4;
+  let fullWindoHeight = window.innerHeight;
 
 
   // About Section -------------------
