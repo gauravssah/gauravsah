@@ -19,18 +19,14 @@ font-family: 'Tilt Prism', cursive;
     letter-spacing: 0.10em;
 }
 
-
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
-
 }
 
 body {
-
     scroll-behavior: smooth;
-
-
+    overflow-x: hidden;
 }
 
 .sidenavigation .hamberger {
@@ -39,7 +35,6 @@ body {
 
 
 /* ################  header ################ */
-
 
 .header {
     display: flex;
@@ -60,9 +55,8 @@ body {
 .header .logo {
     font-size: 4rem;
     font-family: 'Tilt Prism', cursive;
-    text-shadow: 2px 3px rgb(22, 21, 21);
-    text-shadow: 2px 3px black;
-
+    text-shadow: 2px 2px 20px rgb(0, 0, 0);
+    letter-spacing: 0.5rem;
 }
 
 .header .navaction {
@@ -82,22 +76,44 @@ body {
     text-transform: uppercase;
     font-family: 'Golos Text', sans-serif;
     padding-bottom: 0.3em;
-    border-bottom: 3px solid transparent;
     transition: border 0.2s ease-in;
+    position: relative;
+    font-weight: 500;
+}
+
+.header .navaction ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    background: rgb(255, 255, 255);
+    display: block;
+    transition: width 0.3s ease;
 }
 
 .header .navaction ul li a:hover {
-    border-bottom: 3px solid white;
+    text-shadow: 2px 2px 20px rgb(255, 255, 255);
+}
+
+.header .navaction ul li a:hover::after {
+    animation: borderAnimi 0.4s ease-in forwards;
 
 }
 
-/* ################  home ################ */
+@keyframes borderAnimi {
+    100% {
+        width: 80%;
+    }
+}
+
+/* ################  Home ################ */
 
 #home {
     width: 100%;
     height: 100vh;
     scroll-margin-top: 10rem;
 }
+
 
 /* ################  hero-section ################ */
 
@@ -158,7 +174,6 @@ body {
     text-transform: uppercase;
     background-color: white;
     padding: 0 0.5em;
-
 }
 
 
@@ -261,7 +276,6 @@ body {
     border-bottom: 8px solid white;
     transform: translateY(150%);
     animation: num1-anim 1s ease-in-out forwards;
-
 }
 
 @keyframes num1-anim {
@@ -309,6 +323,12 @@ body {
 
 .skillsContainer .introSection {
     width: 50%;
+    transform: translate(-400%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.introSection.showTheBox {
+    transform: translate(-0%);
 }
 
 .skillsContainer .introSection .im {
@@ -323,14 +343,12 @@ body {
     padding: 0.5em 2em;
 }
 
-
 .skillsContainer .introSection>p {
     font-size: 2rem;
     font-family: "Avenir Next", "Avenir", "Avenir Next W01", system-ui, sans-serif;
     line-height: 1.6;
     color: #373737;
     margin: 1.5em 0;
-
 }
 
 /* --------------------------- */
@@ -340,6 +358,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transform: translate(400%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.skillsSection.showTheBox {
+    transform: translate(0%);
 }
 
 .skillsContainer .skillsSection>h2 {
@@ -554,17 +578,25 @@ body {
     height: auto;
     position: relative;
     overflow: hidden;
+    transform: translate(-400%);
+    transition: transform 0.3s ease;
+}
+
+.myproject:nth-of-type(even) {
+    transform: translate(400%);
+    transition: transform 0.3s ease;
+}
+
+.myproject.showTheBox {
+    transform: translate(0%);
 }
 
 .projectimagebox {
     width: 150%;
-
 }
 
 .projectimagebox img {
     width: 100px;
-
-
 }
 
 .myproject::after {
@@ -583,7 +615,6 @@ body {
 .myproject:hover::after {
     opacity: 1;
 }
-
 
 .myproject img {
     width: 100%;
@@ -719,6 +750,12 @@ body {
     flex-direction: column;
     gap: 2rem;
     padding: 0 0.5rem;
+    transform: translate(-400%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.socialMedia.showTheBox {
+    transform: translate(0%);
 }
 
 .contactBox .socialMedia>h3 {
@@ -763,6 +800,12 @@ body {
 
 .form {
     width: 50%;
+    transform: translate(400%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.form.showTheBox {
+    transform: translate(0%);
 }
 
 .form>form {
@@ -782,7 +825,6 @@ textarea {
     resize: none;
     width: 100%;
 }
-
 
 .form .submit {
     padding: 1rem;
@@ -844,10 +886,12 @@ footer .footer .footerContact {
 
 footer .footer .footerContact .fa-brands {
     cursor: pointer;
+    color: black;
 }
 
 footer .footer .footerContact .fa-brands:hover {
     color: #ffffff;
+    transition: color 0.3s ease-in-out;
 }
 
 
