@@ -581,6 +581,7 @@ body {
     overflow: hidden;
     transform: translate(-400%);
     transition: transform 0.3s ease;
+
 }
 
 .myproject:nth-of-type(even) {
@@ -594,10 +595,12 @@ body {
 
 .projectimagebox {
     width: 150%;
+    overflow: hidden;
 }
 
 .projectimagebox img {
     width: 100px;
+    transition: all 0.3s ease-in-out;
 }
 
 .myproject::after {
@@ -708,6 +711,10 @@ body {
 .myproject:hover .detailBox {
     left: 50%;
     opacity: 1;
+}
+
+.myproject:hover img {
+    scale: 1.2;
 }
 
 .myproject:hover .projectDetails {
