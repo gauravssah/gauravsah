@@ -55,12 +55,14 @@ export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
                   </span>
                 </div>
 
-                <img
-                  src={getScreenshotPath(project.title)}
-                  alt={`${project.title} screenshot`}
-                  className="h-56 w-full object-cover object-top transition duration-700 group-hover:scale-[1.05]"
-                  loading="lazy"
-                />
+                <div className="relative h-52 w-full bg-[#050b1f] sm:h-56 md:h-52 xl:h-56">
+                  <img
+                    src={getScreenshotPath(project.title)}
+                    alt={`${project.title} screenshot`}
+                    className="h-full w-full object-contain object-center p-2 transition duration-700 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </div>
 
                 <div className="absolute inset-0 z-10 rounded-t-3xl border-b border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]" />
               </div>

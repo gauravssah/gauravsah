@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { assetPath } from "../utils/assetPath";
 
 const links = [
@@ -12,6 +13,7 @@ const links = [
 ];
 
 export function TopNav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -53,12 +55,32 @@ export function TopNav() {
         <div className="flex items-center gap-3">
           <button
             type="button"
+            onClick={() => setMobileOpen((previous) => !previous)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             className="inline-flex items-center rounded-full border border-white/10 bg-white/5 p-3 text-white/80 lg:hidden"
           >
-            <Menu size={18} />
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
+
+      {mobileOpen ? (
+        <div className="border-t border-white/10 bg-bg/95 px-4 py-4 backdrop-blur-xl lg:hidden">
+          <nav className="mx-auto grid max-w-7xl gap-2">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 transition hover:border-cyan/40 hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }

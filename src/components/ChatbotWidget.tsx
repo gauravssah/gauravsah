@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Bot, MessageCircle, Send, X } from "lucide-react";
 import { PortfolioData } from "../data/portfolio";
 import { answerPortfolioQuestion } from "../utils/ai";
@@ -15,6 +15,7 @@ type ChatEntry = {
 export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState("");
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
   const [messages, setMessages] = useState<ChatEntry[]>([
     {
       role: "assistant",
@@ -32,6 +33,15 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
     ],
     [],
   );
+
+  useEffect(() => {
+    if (!open || !messagesContainerRef.current) {
+      return;
+    }
+
+    messagesContainerRef.current.scrollTop =
+      messagesContainerRef.current.scrollHeight;
+  }, [messages, open]);
 
   const submitQuestion = () => {
     const trimmed = question.trim();
@@ -72,7 +82,10 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
               <X size={18} />
             </button>
           </div>
-          <div className="max-h-72 space-y-3 overflow-auto px-4 py-4">
+          <div
+            ref={messagesContainerRef}
+            className="max-h-72 space-y-3 overflow-y-auto px-4 py-4"
+          >
             {messages.map((entry, index) => (
               <div
                 key={`${entry.role}-${index}`}

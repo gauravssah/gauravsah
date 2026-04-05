@@ -104,6 +104,19 @@ export const chatbotKnowledge = {
   },
   codingPractice:
     "Actively practices DSA on LeetCode, GeeksforGeeks, and HackerRank.",
+  focusAreas: [
+    "Full-stack product development",
+    "Performance-focused frontend engineering",
+    "Scalable API and backend architecture",
+    "Real-world workflow problem solving",
+  ],
+  achievements: [
+    "Improved Lighthouse performance by 30%+ during internship delivery",
+    "Built multiple production-ready projects with end-to-end full-stack flows",
+    "Maintains strong academic record with B.Tech CGPA 8.68",
+  ],
+  languages: ["Hindi", "English"],
+  learningNow: ["System design", "Advanced DSA", "Cloud-ready architecture"],
 };
 
 export const defaultPortfolio: PortfolioData = {

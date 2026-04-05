@@ -91,6 +91,34 @@ export function answerPortfolioQuestion(
     return `Resume is available in the Resume section and can be downloaded directly from this portfolio.`;
   }
 
+  if (
+    normalized.includes("strength") ||
+    normalized.includes("special") ||
+    normalized.includes("focus")
+  ) {
+    return `Core strengths: ${chatbotKnowledge.strengths.join(", ")}. Current focus areas: ${chatbotKnowledge.focusAreas.join(", ")}.`;
+  }
+
+  if (
+    normalized.includes("achievement") ||
+    normalized.includes("accomplishment") ||
+    normalized.includes("highlight")
+  ) {
+    return `Notable highlights: ${chatbotKnowledge.achievements.join(" | ")}.`;
+  }
+
+  if (normalized.includes("language") || normalized.includes("speak")) {
+    return `${chatbotKnowledge.name} communicates in ${chatbotKnowledge.languages.join(" and ")}.`;
+  }
+
+  if (
+    normalized.includes("learning") ||
+    normalized.includes("currently") ||
+    normalized.includes("preparing")
+  ) {
+    return `Current learning focus: ${chatbotKnowledge.learningNow.join(", ")}. ${chatbotKnowledge.codingPractice}`;
+  }
+
   if (normalized.includes("hire") || normalized.includes("available")) {
     return chatbotKnowledge.availability;
   }
