@@ -4,13 +4,14 @@ import { AnimatedSection } from "../components/AnimatedSection";
 import { GlassCard } from "../components/GlassCard";
 import { SectionHeading } from "../components/SectionHeading";
 import { PortfolioData } from "../data/portfolio";
+import { assetPath } from "../utils/assetPath";
 
 type CertificationsSectionProps = {
   portfolio: PortfolioData;
 };
 
 function getCertificateImage(index: number) {
-  return `/images/certificates/certificate-${index + 1}.jpg`;
+  return assetPath(`/images/certificates/certificate-${index + 1}.jpg`);
 }
 
 export function CertificationsSection({
@@ -58,7 +59,9 @@ export function CertificationsSection({
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                   loading="lazy"
                   onError={(event) => {
-                    event.currentTarget.src = "/images/profile-portrait.jpg";
+                    event.currentTarget.src = assetPath(
+                      "/images/profile-portrait.jpg",
+                    );
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/15 to-transparent" />

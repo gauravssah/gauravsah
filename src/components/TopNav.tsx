@@ -1,5 +1,6 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Menu } from "lucide-react";
+import { assetPath } from "../utils/assetPath";
 
 const links = [
   { label: "About", href: "#about" },
@@ -27,7 +28,7 @@ export function TopNav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <a href="#home" className="flex items-center gap-3 text-white">
           <img
-            src="/images/profile-portrait.jpg"
+            src={assetPath("/images/profile-portrait.jpg")}
             alt="Gaurav Kumar Sah"
             className="h-11 w-11 rounded-2xl border border-white/10 object-cover shadow-glow"
           />

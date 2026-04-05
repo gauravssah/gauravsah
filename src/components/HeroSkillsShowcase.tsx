@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
+import { assetPath } from "../utils/assetPath";
 
 const floatingSkills = [
   { icon: Code2, label: "React + Next.js", x: "-18%", y: "16%", delay: 0 },
@@ -46,7 +47,7 @@ export function HeroSkillsShowcase({ name, role }: HeroSkillsShowcaseProps) {
           style={{ transformStyle: "preserve-3d" }}
         >
           <img
-            src="/images/profile-portrait.jpg"
+            src={assetPath("/images/profile-portrait.jpg")}
             alt={name}
             className="h-48 w-full rounded-2xl object-cover"
           />

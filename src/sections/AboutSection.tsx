@@ -8,6 +8,7 @@ import { PortfolioData } from "../data/portfolio";
 import { AnimatedSection } from "../components/AnimatedSection";
 import { SectionHeading } from "../components/SectionHeading";
 import { GlassCard } from "../components/GlassCard";
+import { assetPath } from "../utils/assetPath";
 
 type AboutSectionProps = {
   portfolio: PortfolioData;
@@ -30,7 +31,7 @@ export function AboutSection({ portfolio }: AboutSectionProps) {
           <div className="relative mx-auto flex max-w-md flex-col gap-6">
             <div className="flex items-center gap-4">
               <img
-                src="/images/profile-portrait.jpg"
+                src={assetPath("/images/profile-portrait.jpg")}
                 alt="Gaurav Kumar profile"
                 className="h-24 w-24 rounded-2xl border border-white/10 object-cover shadow-glow"
               />
@@ -48,7 +49,7 @@ export function AboutSection({ portfolio }: AboutSectionProps) {
             </div>
 
             <img
-              src="/images/profile-portrait.jpg"
+              src={assetPath("/images/profile-portrait.jpg")}
               alt="Profile portrait"
               className="h-72 w-full rounded-[2rem] border border-white/10 object-cover shadow-glow transition duration-300 hover:rotate-[-1deg] hover:scale-[1.01]"
             />

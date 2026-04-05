@@ -4,6 +4,7 @@ import { AnimatedSection } from "../components/AnimatedSection";
 import { GlassCard } from "../components/GlassCard";
 import { SectionHeading } from "../components/SectionHeading";
 import { PortfolioData } from "../data/portfolio";
+import { assetPath } from "../utils/assetPath";
 import { summarizeTechStack } from "../utils/ai";
 
 type ProjectsSectionProps = {
@@ -13,14 +14,14 @@ type ProjectsSectionProps = {
 export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
   const getScreenshotPath = (projectTitle: string) => {
     if (projectTitle === "GoalTrackr") {
-      return "/images/projects-ss/GoalTracker-Project-ss.png";
+      return assetPath("/images/projects-ss/GoalTracker-Project-ss.png");
     }
 
     if (projectTitle === "TicketFlix") {
-      return "/images/projects-ss/TicketFlix-Project-ss.png";
+      return assetPath("/images/projects-ss/TicketFlix-Project-ss.png");
     }
 
-    return "/images/projects-ss/AnimalsLover-Project-ss.png";
+    return assetPath("/images/projects-ss/AnimalsLover-Project-ss.png");
   };
 
   return (
