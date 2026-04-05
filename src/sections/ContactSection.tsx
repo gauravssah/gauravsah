@@ -108,7 +108,7 @@ export function ContactSection({ portfolio }: ContactSectionProps) {
                     ? Github
                     : social.label === "LinkedIn"
                       ? Linkedin
-                      : social.label === "Portfolio"
+                      : social.label === "Medium"
                         ? Globe
                         : Twitter;
 

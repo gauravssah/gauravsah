@@ -1,4 +1,4 @@
-# Gaurav Kumar Sah - 3D Portfolio Website
+# Gaurav Kumar Sah - Portfolio Website
 
 A modern personal portfolio built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, and Three.js.
 
