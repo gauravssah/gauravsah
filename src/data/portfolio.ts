@@ -309,6 +309,7 @@ export const defaultPortfolio: PortfolioData = {
   socials: [
     { label: "GitHub", url: "https://github.com/gauravssah" },
     { label: "LinkedIn", url: "https://linkedin.com/in/gauravssah" },
+    { label: "Medium", url: "https://gauravssah.medium.com" },
     { label: "X", url: "https://x.com/gauravssah" },
   ],
   resumeUrl: "/Gaurav_Resume.pdf",
