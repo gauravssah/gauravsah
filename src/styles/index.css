@@ -131,21 +131,22 @@ img {
 }
 
 @media (max-width: 768px) {
+
     html,
     body,
     #root {
         overflow-x: hidden;
     }
 
-    main > section {
+    main>section {
         max-width: 100%;
     }
 
-    main > section:not(#home) {
+    main>section:not(#home) {
         margin-top: 48px;
     }
 
-    main > section:last-of-type {
+    main>section:last-of-type {
         margin-bottom: 48px;
     }
 
