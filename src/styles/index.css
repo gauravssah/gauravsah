@@ -203,7 +203,6 @@ img {
     .hero-3d-card {
         order: 2;
         width: 100%;
-        max-width: min(92vw, 380px);
         margin-top: 2.25rem;
         margin-left: auto;
         margin-right: auto;
@@ -214,17 +213,37 @@ img {
         overflow: visible;
     }
 
-    .hero-card-shell {
+    .mobile-3d-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible !important;
+        margin-top: 40px;
+    }
+
+    .desktop-3d-component {
+        transform: scale(0.92);
+        transform-origin: top center;
         width: fit-content;
         margin: 0 auto;
         position: relative;
-        transform: scale(0.86);
-        transform-origin: top center;
         overflow: visible;
     }
 
-    .hero-3d-card .hero-card-shell {
-        max-width: none;
+    .hero-card-shell {
+        width: min(96vw, 22rem);
+        height: 26.5rem;
+        overflow: visible;
+    }
+
+    .hero-card-shell>.relative.z-10 {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 1.4rem;
+    }
+
+    .desktop-3d-component {
         margin-left: auto;
         margin-right: auto;
     }

@@ -173,12 +173,14 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
           </motion.div>
         </div>
 
-        <div className="hero-3d-card hero-visual relative mt-6 flex min-h-[20.5rem] items-center justify-center pt-1 md:mt-8 md:min-h-[24rem] lg:mt-0 lg:min-h-[42rem] lg:items-start lg:pt-2 lg:-translate-y-8">
-          <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-neon/14 via-cyan/8 to-transparent blur-3xl" />
-          <HeroSkillsShowcase
-            name={portfolio.hero.name}
-            role={portfolio.hero.role}
-          />
+        <div className="hero-3d-card hero-visual mobile-3d-wrapper relative mt-6 flex min-h-[20.5rem] items-center justify-center pt-1 md:mt-8 md:min-h-[24rem] lg:mt-0 lg:min-h-[42rem] lg:items-start lg:pt-2 lg:-translate-y-8">
+          <div className="desktop-3d-component relative">
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-neon/14 via-cyan/8 to-transparent blur-3xl" />
+            <HeroSkillsShowcase
+              name={portfolio.hero.name}
+              role={portfolio.hero.role}
+            />
+          </div>
         </div>
       </div>
     </section>
