@@ -129,3 +129,106 @@ img {
 .skill-strip:hover .skill-strip-track-reverse {
     animation-play-state: paused;
 }
+
+@media (max-width: 768px) {
+    html,
+    body,
+    #root {
+        overflow-x: hidden;
+    }
+
+    main > section {
+        max-width: 100%;
+    }
+
+    main > section:not(#home) {
+        margin-top: 48px;
+    }
+
+    main > section:last-of-type {
+        margin-bottom: 48px;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-layout {
+        align-items: start;
+        gap: 1.75rem;
+    }
+
+    .hero-text {
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-stack {
+        gap: 0;
+    }
+
+    .hero-text h1,
+    .hero-text p,
+    .hero-text span {
+        overflow-wrap: anywhere;
+    }
+
+    .hero-text p {
+        line-height: 1.6;
+    }
+
+    .hero-actions {
+        gap: 0.875rem;
+    }
+
+    .hero-banners {
+        order: 3;
+        width: 100%;
+        display: grid;
+        gap: 0.75rem;
+    }
+
+    .hero-banners .skill-strip {
+        width: 100%;
+    }
+
+    .hero-chips {
+        order: 4;
+        width: 100%;
+    }
+
+    .hero-3d-card {
+        order: 2;
+        width: 100%;
+        max-width: min(92vw, 380px);
+        margin-top: 2.25rem;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: visible;
+    }
+
+    .hero-card-shell {
+        width: fit-content;
+        margin: 0 auto;
+        position: relative;
+        transform: scale(0.86);
+        transform-origin: top center;
+        overflow: visible;
+    }
+
+    .hero-3d-card .hero-card-shell {
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-floating-tag {
+        position: absolute;
+    }
+}

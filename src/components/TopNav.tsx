@@ -27,7 +27,7 @@ export function TopNav() {
         style={{ scaleX }}
         className="h-[2px] origin-left bg-gradient-to-r from-cyan via-neon to-accent"
       />
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-6 lg:px-8">
         <a href="#home" className="flex items-center gap-3 text-white">
           <img
             src={assetPath("/images/profile-portrait.jpg")}

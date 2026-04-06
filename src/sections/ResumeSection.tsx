@@ -11,7 +11,7 @@ export function ResumeSection({ portfolio }: ResumeSectionProps) {
   return (
     <AnimatedSection
       id="resume"
-      className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
+      className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8"
     >
       <GlassCard className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center md:p-8">
         <div>

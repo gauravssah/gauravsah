@@ -18,7 +18,7 @@ export function AboutSection({ portfolio }: AboutSectionProps) {
   return (
     <AnimatedSection
       id="about"
-      className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8"
+      className="mx-auto max-w-7xl px-4 py-24 md:px-6 lg:px-8"
     >
       <SectionHeading
         eyebrow="About"
@@ -54,7 +54,7 @@ export function AboutSection({ portfolio }: AboutSectionProps) {
               className="h-72 w-full rounded-[2rem] border border-white/10 object-cover shadow-glow transition duration-300 hover:rotate-[-1deg] hover:scale-[1.01]"
             />
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3 md:grid-cols-2">
               {[
                 {
                   icon: BriefcaseBusiness,

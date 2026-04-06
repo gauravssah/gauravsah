@@ -34,7 +34,7 @@ export function ExperienceSection({ portfolio }: ExperienceSectionProps) {
   return (
     <AnimatedSection
       id="experience"
-      className="relative mx-auto max-w-7xl overflow-hidden px-4 py-24 sm:px-6 lg:px-8"
+      className="relative mx-auto max-w-7xl overflow-hidden px-4 py-24 md:px-6 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-56 bg-[radial-gradient(circle_at_top,rgba(103,232,249,0.12),transparent_65%)]" />
       <div className="pointer-events-none absolute right-[-6rem] top-24 -z-10 h-52 w-52 rounded-full bg-cyan/5 blur-3xl" />
