@@ -14,7 +14,8 @@ export function AnimatedSection({
 }: AnimatedSectionProps) {
   const prefersReducedMotion = useReducedMotion();
   const isMobile =
-    typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 768px)").matches;
 
   const initialY = prefersReducedMotion ? 0 : isMobile ? 20 : 34;
 
@@ -24,7 +25,11 @@ export function AnimatedSection({
       className={className}
       initial={{ opacity: 0, y: initialY }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: isMobile ? 0.1 : 0.18, margin: "0px 0px -8% 0px" }}
+      viewport={{
+        once: true,
+        amount: isMobile ? 0.1 : 0.18,
+        margin: "0px 0px -8% 0px",
+      }}
       transition={
         prefersReducedMotion
           ? { duration: 0.01 }
