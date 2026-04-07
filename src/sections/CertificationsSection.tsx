@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
-import { Award, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Award, Sparkles, X } from "lucide-react";
+import { createPortal } from "react-dom";
 import { AnimatedSection } from "../components/AnimatedSection";
 import { GlassCard } from "../components/GlassCard";
 import { SectionHeading } from "../components/SectionHeading";
@@ -10,20 +12,39 @@ type CertificationsSectionProps = {
   portfolio: PortfolioData;
 };
 
-function getCertificateImage(index: number) {
-  return assetPath(`/images/certificates/certificate-${index + 1}.jpg`);
-}
-
 export function CertificationsSection({
   portfolio,
 }: CertificationsSectionProps) {
-  const certificates = portfolio.certificates.map((title, index) => ({
-    id: `${title}-${index}`,
-    title,
-    image: getCertificateImage(index),
+  const [activeCertificate, setActiveCertificate] = useState<{
+    title: string;
+    image: string;
+  } | null>(null);
+
+  const certificates = portfolio.certificates.map((certificate, index) => ({
+    id: `${certificate.title}-${index}`,
+    title: certificate.title,
+    image: assetPath(certificate.image),
   }));
 
   const marquee = [...certificates, ...certificates];
+
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveCertificate(null);
+      }
+    };
+
+    if (activeCertificate) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleEsc);
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [activeCertificate]);
 
   return (
     <AnimatedSection
@@ -38,7 +59,7 @@ export function CertificationsSection({
 
       <GlassCard className="relative overflow-hidden p-0">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg" />
-        <div className="certificate-water-bg absolute inset-0" />
+        <div className="certificate-water-bg pointer-events-none absolute inset-0" />
 
         <div className="certificate-marquee relative flex w-max gap-5 px-5 py-8">
           {marquee.map((certificate, index) => (
@@ -53,18 +74,30 @@ export function CertificationsSection({
               style={{ transformStyle: "preserve-3d" }}
             >
               <div className="relative h-44 overflow-hidden">
-                <img
-                  src={certificate.image}
-                  alt={`${certificate.title} certificate`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                  loading="lazy"
-                  onError={(event) => {
-                    event.currentTarget.src = assetPath(
-                      "/images/profile-portrait.jpg",
-                    );
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/15 to-transparent" />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveCertificate({
+                      title: certificate.title,
+                      image: certificate.image,
+                    })
+                  }
+                  className="relative z-10 block h-full w-full cursor-zoom-in"
+                  aria-label={`Open ${certificate.title} certificate`}
+                >
+                  <img
+                    src={certificate.image}
+                    alt={`${certificate.title} certificate`}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    onError={(event) => {
+                      event.currentTarget.src = assetPath(
+                        portfolio.media.certificateFallbackImage,
+                      );
+                    }}
+                  />
+                </button>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/15 to-transparent" />
               </div>
 
               <div className="space-y-2 p-4">
@@ -83,6 +116,46 @@ export function CertificationsSection({
           ))}
         </div>
       </GlassCard>
+
+      {createPortal(
+        <AnimatePresence>
+          {activeCertificate ? (
+            <motion.div
+              className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveCertificate(null)}
+            >
+              <button
+                type="button"
+                className="absolute right-4 top-4 z-[10000] inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+                onClick={() => setActiveCertificate(null)}
+                aria-label="Close certificate preview"
+              >
+                <X size={18} />
+              </button>
+
+              <motion.img
+                src={activeCertificate.image}
+                alt={`${activeCertificate.title} full certificate`}
+                className="max-h-[90vh] w-auto max-w-[95vw] rounded-2xl border border-white/15 bg-[#0b1430] object-contain"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={(event) => event.stopPropagation()}
+                onError={(event) => {
+                  event.currentTarget.src = assetPath(
+                    portfolio.media.certificateFallbackImage,
+                  );
+                }}
+              />
+            </motion.div>
+          ) : null}
+        </AnimatePresence>,
+        document.body,
+      )}
     </AnimatedSection>
   );
 }

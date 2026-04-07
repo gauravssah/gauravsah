@@ -31,6 +31,11 @@ export function answerPortfolioQuestion(
     .map((project) => project.title)
     .join(", ");
 
+  const topProjectTitles = portfolio.projects
+    .slice(0, 3)
+    .map((project) => project.title)
+    .join(", ");
+
   const latestExperience = portfolio.experience[0];
 
   const askedProject = portfolio.projects.find((project) =>
@@ -44,7 +49,9 @@ export function answerPortfolioQuestion(
   if (
     normalized.includes("who") ||
     normalized.includes("about") ||
-    normalized.includes("gaurav") ||
+    normalized.includes(
+      portfolio.hero.name.toLowerCase().split(" ")[0] || "",
+    ) ||
     normalized.includes("introduce")
   ) {
     return `${chatbotKnowledge.name} is a ${chatbotKnowledge.role}. ${chatbotKnowledge.headline}. ${chatbotKnowledge.availability}`;
@@ -59,7 +66,7 @@ export function answerPortfolioQuestion(
   }
 
   if (normalized.includes("project") || normalized.includes("build")) {
-    return `Highlighted projects are ${projectsList}. GoalTrackr and TicketFlix are full-stack production-style apps, while Animalslover is a real startup website delivery experience.`;
+    return `Highlighted projects are ${projectsList}. Top featured builds include ${topProjectTitles}.`;
   }
 
   if (

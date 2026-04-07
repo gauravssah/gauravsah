@@ -1,18 +1,14 @@
 import { useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { PortfolioData } from "../data/portfolio";
 import { assetPath } from "../utils/assetPath";
 
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Certificates", href: "#certifications" },
-  { label: "Contact", href: "#contact" },
-];
+type TopNavProps = {
+  portfolio: PortfolioData;
+};
 
-export function TopNav() {
+export function TopNav({ portfolio }: TopNavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -30,18 +26,20 @@ export function TopNav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-6 lg:px-8">
         <a href="#home" className="flex items-center gap-3 text-white">
           <img
-            src={assetPath("/images/profile-portrait.jpg")}
-            alt="Gaurav Kumar Sah"
+            src={assetPath(portfolio.media.profileImage)}
+            alt={portfolio.media.profileAlt}
             className="h-11 w-11 rounded-2xl border border-white/10 object-cover shadow-glow"
           />
           <div>
-            <p className="text-sm font-medium">Gaurav Kumar Sah</p>
-            <p className="text-xs text-white/45">MERN Stack Developer</p>
+            <p className="text-sm font-medium">{portfolio.hero.name}</p>
+            <p className="text-xs text-white/45">
+              {portfolio.navigation.subtitle}
+            </p>
           </div>
         </a>
 
         <nav className="hidden items-center gap-5 lg:flex">
-          {links.map((link) => (
+          {portfolio.navigation.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -68,7 +66,7 @@ export function TopNav() {
       {mobileOpen ? (
         <div className="border-t border-white/10 bg-bg/95 px-4 py-4 backdrop-blur-xl lg:hidden">
           <nav className="mx-auto grid max-w-7xl gap-2">
-            {links.map((link) => (
+            {portfolio.navigation.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}

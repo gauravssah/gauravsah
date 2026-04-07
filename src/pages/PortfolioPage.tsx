@@ -22,7 +22,7 @@ export function PortfolioPage() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-bg text-white">
-      <TopNav />
+      <TopNav portfolio={data} />
       <main className="relative z-10 pt-24 md:pt-28">
         <HeroSection portfolio={data} />
         <AboutSection portfolio={data} />
@@ -35,7 +35,7 @@ export function PortfolioPage() {
         <ContactSection portfolio={data} />
       </main>
       <footer className="border-t border-white/10 py-8 text-center text-sm text-white/45">
-        © {year} {data.hero.name}. All rights reserved. Developed with love.
+        © {year} {data.hero.name}. {data.footerNote}
       </footer>
       <ChatbotWidget portfolio={data} />
     </div>

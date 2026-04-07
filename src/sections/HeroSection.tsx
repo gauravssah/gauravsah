@@ -14,39 +14,6 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
   const primaryRole = roleParts[0] || "Full-Stack Developer";
   const secondaryRole = roleParts.slice(1).join(" | ");
 
-  const typedLines = [
-    "Building scalable web applications.",
-    "MERN stack with clean architecture.",
-    "Fast UI, robust APIs, strong DSA mindset.",
-    "Focused on real product impact.",
-  ];
-
-  const movingSkills = [
-    "React.js",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "REST APIs",
-    "JavaScript",
-    "Java",
-    "AWS Cloud",
-    "DSA",
-  ];
-
-  const movingSkillsReverse = [
-    "Problem Solving",
-    "System Design",
-    "UI/UX",
-    "Performance",
-    "Scalability",
-    "GitHub Workflow",
-    "Testing",
-    "Collaboration",
-    "API Integration",
-    "Cloud Ready",
-  ];
-
   return (
     <section id="home" className="relative overflow-hidden pt-20 md:pt-28">
       <div className="hero hero-layout mx-auto grid min-h-[calc(100vh-4.5rem)] max-w-7xl items-center gap-9 px-4 pb-10 md:gap-12 md:px-6 md:pb-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
@@ -57,7 +24,7 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
             transition={{ delay: 0.15 }}
             className="inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-cyan/80 md:px-4 md:py-2 md:text-xs md:tracking-[0.3em]"
           >
-            <Sparkles size={14} /> Gaurav Kumar Sah portfolio
+            <Sparkles size={14} /> {portfolio.heroUi.badgeText}
           </motion.span>
 
           <motion.h1
@@ -91,7 +58,7 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
               What I build
             </span>
             <TypingText
-              texts={typedLines}
+              texts={portfolio.heroUi.typedLines}
               className="inline-block min-h-[3.2rem] md:min-h-[3.8rem] lg:min-h-[3.2rem]"
             />
           </motion.p>
@@ -106,27 +73,30 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
               href="#projects"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-neon to-cyan px-5 py-3 text-sm font-medium text-bg transition hover:-translate-y-0.5 md:w-auto md:px-6 md:text-base"
             >
-              View Projects <ArrowRight size={18} />
+              {portfolio.heroUi.primaryButtonLabel} <ArrowRight size={18} />
             </a>
             <a
               href="#contact"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 transition hover:border-cyan/40 hover:bg-white/10 md:w-auto md:px-6 md:text-base"
             >
-              Contact Me <Mail size={18} />
+              {portfolio.heroUi.secondaryButtonLabel} <Mail size={18} />
             </a>
             <a
               href={portfolio.resumeUrl}
               download
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 transition hover:border-cyan/40 hover:bg-white/10 md:w-auto md:px-6 md:text-base"
             >
-              Download Resume <Download size={18} />
+              {portfolio.heroUi.resumeButtonLabel} <Download size={18} />
             </a>
           </motion.div>
 
           <div className="hero-banners mt-4 space-y-3">
             <div className="skill-strip overflow-hidden rounded-xl border border-white/10 bg-white/5 py-2">
               <div className="skill-strip-track flex w-max gap-6 px-4 text-sm text-white/75">
-                {[...movingSkills, ...movingSkills].map((skill, index) => (
+                {[
+                  ...portfolio.heroUi.movingSkills,
+                  ...portfolio.heroUi.movingSkills,
+                ].map((skill, index) => (
                   <span
                     key={`${skill}-${index}`}
                     className="inline-flex items-center gap-2 whitespace-nowrap"
@@ -140,17 +110,18 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
 
             <div className="skill-strip overflow-hidden rounded-xl border border-white/10 bg-white/5 py-2">
               <div className="skill-strip-track-reverse flex w-max gap-6 px-4 text-sm text-white/70">
-                {[...movingSkillsReverse, ...movingSkillsReverse].map(
-                  (skill, index) => (
-                    <span
-                      key={`${skill}-rev-${index}`}
-                      className="inline-flex items-center gap-2 whitespace-nowrap"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-neon" />
-                      {skill}
-                    </span>
-                  ),
-                )}
+                {[
+                  ...portfolio.heroUi.movingSkillsReverse,
+                  ...portfolio.heroUi.movingSkillsReverse,
+                ].map((skill, index) => (
+                  <span
+                    key={`${skill}-rev-${index}`}
+                    className="inline-flex items-center gap-2 whitespace-nowrap"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-neon" />
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -179,6 +150,10 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
             <HeroSkillsShowcase
               name={portfolio.hero.name}
               role={portfolio.hero.role}
+              profileImage={portfolio.media.profileImage}
+              profileAlt={portfolio.media.profileAlt}
+              focusLine={portfolio.heroUi.focusLine}
+              floatingLabels={portfolio.heroUi.floatingSkills}
             />
           </div>
         </div>

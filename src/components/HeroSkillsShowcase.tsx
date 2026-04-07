@@ -27,9 +27,25 @@ const floatingSkills = [
 type HeroSkillsShowcaseProps = {
   name: string;
   role: string;
+  profileImage: string;
+  profileAlt: string;
+  focusLine: string;
+  floatingLabels: string[];
 };
 
-export function HeroSkillsShowcase({ name, role }: HeroSkillsShowcaseProps) {
+export function HeroSkillsShowcase({
+  name,
+  role,
+  profileImage,
+  profileAlt,
+  focusLine,
+  floatingLabels,
+}: HeroSkillsShowcaseProps) {
+  const skillsToRender = floatingSkills.map((item, index) => ({
+    ...item,
+    label: floatingLabels[index] || item.label,
+  }));
+
   return (
     <div className="hero-card-shell relative mx-auto h-[20.5rem] w-full max-w-[20rem] overflow-hidden rounded-[2rem] border border-white/10 bg-[#07122b]/95 p-3 shadow-glow md:h-[23rem] md:max-w-[26rem] md:p-6 lg:h-[37rem] lg:max-w-none">
       <div className="absolute inset-0 bg-gradient-to-br from-neon/10 via-transparent to-cyan/10" />
@@ -47,8 +63,8 @@ export function HeroSkillsShowcase({ name, role }: HeroSkillsShowcaseProps) {
           style={{ transformStyle: "preserve-3d" }}
         >
           <img
-            src={assetPath("/images/profile-portrait.jpg")}
-            alt={name}
+            src={assetPath(profileImage)}
+            alt={profileAlt || name}
             className="h-40 w-full rounded-2xl object-cover md:h-48"
           />
           <h3 className="mt-3 text-base font-semibold text-white md:mt-4 md:text-xl">
@@ -56,12 +72,12 @@ export function HeroSkillsShowcase({ name, role }: HeroSkillsShowcaseProps) {
           </h3>
           <p className="mt-1 text-[11px] text-cyan/80 md:text-sm">{role}</p>
           <p className="mt-2.5 text-[10px] uppercase tracking-[0.12em] text-white/55 md:mt-3 md:text-xs md:tracking-[0.22em]">
-            Focused on scalable full-stack delivery
+            {focusLine}
           </p>
         </motion.div>
       </div>
 
-      {floatingSkills.map((item) => (
+      {skillsToRender.map((item) => (
         <motion.div
           key={item.label}
           className="hero-floating-tag absolute z-20 rounded-2xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-white/85 backdrop-blur-md"

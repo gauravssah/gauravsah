@@ -9,28 +9,6 @@ type ExperienceSectionProps = {
 };
 
 export function ExperienceSection({ portfolio }: ExperienceSectionProps) {
-  const highlights = [
-    {
-      value: "5",
-      label: "internships completed",
-    },
-    {
-      value: "2",
-      label: "domains explored",
-    },
-    {
-      value: "1",
-      label: "clear focus on delivery",
-    },
-  ];
-
-  const focusTags = [
-    "Startup delivery",
-    "Government workflows",
-    "React",
-    "Next.js",
-  ];
-
   return (
     <AnimatedSection
       id="experience"
@@ -58,7 +36,7 @@ export function ExperienceSection({ portfolio }: ExperienceSectionProps) {
           </p>
 
           <div className="mt-6 grid gap-3">
-            {highlights.map((item) => (
+            {portfolio.experienceHighlights.map((item) => (
               <div
                 key={item.label}
                 className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
@@ -72,7 +50,7 @@ export function ExperienceSection({ portfolio }: ExperienceSectionProps) {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            {focusTags.map((tag) => (
+            {portfolio.experienceFocusTags.map((tag) => (
               <span
                 key={tag}
                 className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs uppercase tracking-[0.22em] text-white/70"

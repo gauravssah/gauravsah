@@ -107,14 +107,7 @@ export function SkillsSection({ portfolio }: SkillsSectionProps) {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-6"
       >
-        {[
-          "Problem Solving",
-          "Team Collaboration",
-          "Communication Skills",
-          "Time Management",
-          "Adaptability",
-          "Continuous Learning",
-        ].map((item, index) => (
+        {portfolio.softSkills.map((item) => (
           <GlassCard
             key={item}
             className="group px-5 py-4 text-sm text-white/80 transition duration-300 hover:-translate-y-1 hover:border-cyan/25"

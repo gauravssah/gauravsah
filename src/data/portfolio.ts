@@ -10,6 +10,12 @@ export type Project = {
   tech: string[];
   github: string;
   live: string;
+  image: string;
+};
+
+export type Certificate = {
+  title: string;
+  image: string;
 };
 
 export type ExperienceItem = {
@@ -38,21 +44,65 @@ export type PortfolioData = {
     intro: string;
     highlights: string[];
   };
+  media: {
+    profileImage: string;
+    profileAlt: string;
+    certificateFallbackImage: string;
+  };
+  navigation: {
+    subtitle: string;
+    links: { label: string; href: string }[];
+  };
+  heroUi: {
+    badgeText: string;
+    typedLines: string[];
+    movingSkills: string[];
+    movingSkillsReverse: string[];
+    focusLine: string;
+    floatingSkills: string[];
+    primaryButtonLabel: string;
+    secondaryButtonLabel: string;
+    resumeButtonLabel: string;
+  };
   about: {
     bio: string[];
+    headline: string;
+    locationLabel: string;
+    highlights: string[];
   };
   skills: SkillCategory[];
+  softSkills: string[];
   projects: Project[];
   experience: ExperienceItem[];
+  experienceHighlights: {
+    value: string;
+    label: string;
+  }[];
+  experienceFocusTags: string[];
   education: EducationItem[];
-  certificates: string[];
+  certificates: Certificate[];
   contact: {
     email: string;
     phone: string;
     location: string;
   };
+  chatbotUi: {
+    welcomeMessage: string;
+    quickPrompts: string[];
+    panelEyebrow: string;
+    panelTitle: string;
+    inputPlaceholder: string;
+    closedButtonLabel: string;
+  };
+  resumeSection: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    buttonLabel: string;
+  };
   socials: SocialLink[];
   resumeUrl: string;
+  footerNote: string;
 };
 
 export const chatbotKnowledge = {
@@ -132,7 +182,76 @@ export const defaultPortfolio: PortfolioData = {
       "Actively preparing for software engineering roles through DSA practice",
     ],
   },
+  media: {
+    profileImage: "/images/profile-portrait.jpg",
+    profileAlt: "Gaurav Kumar Sah",
+    certificateFallbackImage: "/images/profile-portrait.jpg",
+  },
+  navigation: {
+    subtitle: "MERN Stack Developer",
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Skills", href: "#skills" },
+      { label: "Projects", href: "#projects" },
+      { label: "Experience", href: "#experience" },
+      { label: "Certificates", href: "#certifications" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+  heroUi: {
+    badgeText: "Gaurav Kumar Sah portfolio",
+    typedLines: [
+      "Building scalable web applications.",
+      "MERN stack with clean architecture.",
+      "Fast UI, robust APIs, strong DSA mindset.",
+      "Focused on real product impact.",
+    ],
+    movingSkills: [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST APIs",
+      "JavaScript",
+      "Java",
+      "AWS Cloud",
+      "DSA",
+    ],
+    movingSkillsReverse: [
+      "Problem Solving",
+      "System Design",
+      "UI/UX",
+      "Performance",
+      "Scalability",
+      "GitHub Workflow",
+      "Testing",
+      "Collaboration",
+      "API Integration",
+      "Cloud Ready",
+    ],
+    focusLine: "Focused on scalable full-stack delivery",
+    floatingSkills: [
+      "React + Next.js",
+      "Node + Express",
+      "MongoDB + APIs",
+      "AI Workflows",
+      "System Design",
+      "Clean Architecture",
+    ],
+    primaryButtonLabel: "View Projects",
+    secondaryButtonLabel: "Contact Me",
+    resumeButtonLabel: "Download Resume",
+  },
   about: {
+    headline: "Full-Stack Developer | Software Engineer Aspirant",
+    locationLabel: "India",
+    highlights: [
+      "Full-stack internship delivery",
+      "B.Tech CSE (AI) + Diploma CSE",
+      "MERN + REST API architecture",
+      "Scalable UI + clean UX execution",
+    ],
     bio: [
       "I am a passionate Full-Stack Developer specializing in the MERN stack and Java, currently pursuing B.Tech in Computer Science and Engineering with a specialization in Artificial Intelligence.",
       "My journey started with a 3-year Diploma in Computer Science where I discovered how software can solve real-world problems when it is built with clarity, speed, and purpose.",
@@ -181,6 +300,14 @@ export const defaultPortfolio: PortfolioData = {
       progress: 92,
     },
   ],
+  softSkills: [
+    "Problem Solving",
+    "Team Collaboration",
+    "Communication Skills",
+    "Time Management",
+    "Adaptability",
+    "Continuous Learning",
+  ],
   projects: [
     {
       title: "GoalTrackr",
@@ -197,6 +324,7 @@ export const defaultPortfolio: PortfolioData = {
       ],
       github: "https://github.com/gauravssah/GoalTrackr",
       live: "https://goaltrackr-theta.vercel.app",
+      image: "/images/projects-ss/GoalTracker-Project-ss.png",
     },
     {
       title: "TicketFlix",
@@ -213,6 +341,7 @@ export const defaultPortfolio: PortfolioData = {
       ],
       github: "https://github.com/gauravssah/TicketFlix",
       live: "https://ticketflix-eight.vercel.app",
+      image: "/images/projects-ss/TicketFlix-Project-ss.png",
     },
     {
       title: "Animalslover Official Website",
@@ -221,6 +350,7 @@ export const defaultPortfolio: PortfolioData = {
       tech: ["React.js", "Next.js", "Tailwind CSS", "Component Architecture"],
       github: "https://github.com/gauravssah",
       live: "https://www.animalslover.in",
+      image: "/images/projects-ss/AnimalsLover-Project-ss.png",
     },
   ],
   experience: [
@@ -281,6 +411,26 @@ export const defaultPortfolio: PortfolioData = {
       ],
     },
   ],
+  experienceHighlights: [
+    {
+      value: "5",
+      label: "internships completed",
+    },
+    {
+      value: "2",
+      label: "domains explored",
+    },
+    {
+      value: "1",
+      label: "clear focus on delivery",
+    },
+  ],
+  experienceFocusTags: [
+    "Startup delivery",
+    "Government workflows",
+    "React",
+    "Next.js",
+  ],
   education: [
     {
       title: "B.Tech - Computer Science and Engineering (AI)",
@@ -308,16 +458,52 @@ export const defaultPortfolio: PortfolioData = {
     },
   ],
   certificates: [
-    "Learn Complete Front-End Web Development Course (2022)",
-    "NPTEL Online Certification - Introduction to Operating Systems",
-    "Learn HTML, CSS, JavaScript",
-    "NPTEL Online Certification - Cloud Computing",
-    "JavaScript - Basics to Advanced Step by Step",
+    {
+      title: "Learn Complete Front-End Web Development Course (2022)",
+      image: "/images/certificates/Certificate Computer Networks.png",
+    },
+    {
+      title: "NPTEL Online Certification - Introduction to Operating Systems",
+      image: "/images/certificates/Nptel Operating Systems Certificate.png",
+    },
+    {
+      title: "Learn HTML, CSS, JavaScript",
+      image: "/images/certificates/Certificate Computer Networks.png",
+    },
+    {
+      title: "NPTEL Online Certification - Cloud Computing",
+      image: "/images/certificates/Certificate Computer Networks.png",
+    },
+    {
+      title: "JavaScript - Basics to Advanced Step by Step",
+      image: "/images/certificates/Nptel Operating Systems Certificate.png",
+    },
   ],
   contact: {
     email: "gauravssah01@gmail.com",
     phone: "+91 6201219705",
     location: "Muzaffarpur, Bihar, India",
+  },
+  chatbotUi: {
+    welcomeMessage:
+      "Ask anything about Gaurav: skills, projects, internships, education, contact details, or resume.",
+    quickPrompts: [
+      "What are Gaurav's main skills?",
+      "Tell me about GoalTrackr and TicketFlix.",
+      "What internships has Gaurav done?",
+      "How can I contact Gaurav?",
+    ],
+    panelEyebrow: "Ask about Gaurav",
+    panelTitle: "AI Assistant",
+    inputPlaceholder: "Type a question...",
+    closedButtonLabel: "Open assistant",
+  },
+  resumeSection: {
+    eyebrow: "Profile PDF",
+    title: "Download Linked profile details",
+    description:
+      "Use this PDF to review detailed summary, certifications, projects, and complete internship experience.",
+    buttonLabel: "Download Profile PDF",
   },
   socials: [
     { label: "GitHub", url: "https://github.com/gauravssah" },
@@ -326,4 +512,5 @@ export const defaultPortfolio: PortfolioData = {
     { label: "X", url: "https://x.com/gauravssah" },
   ],
   resumeUrl: "/Gaurav_Resume.pdf",
+  footerNote: "All rights reserved. Developed with love.",
 };

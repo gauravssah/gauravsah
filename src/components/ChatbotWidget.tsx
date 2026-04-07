@@ -19,19 +19,13 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
   const [messages, setMessages] = useState<ChatEntry[]>([
     {
       role: "assistant",
-      content:
-        "Ask anything about Gaurav: skills, projects, internships, education, contact details, or resume.",
+      content: portfolio.chatbotUi.welcomeMessage,
     },
   ]);
 
   const quickPrompts = useMemo(
-    () => [
-      "What are Gaurav’s main skills?",
-      "Tell me about GoalTrackr and TicketFlix.",
-      "What internships has Gaurav done?",
-      "How can I contact Gaurav?",
-    ],
-    [],
+    () => portfolio.chatbotUi.quickPrompts,
+    [portfolio.chatbotUi.quickPrompts],
   );
 
   useEffect(() => {
@@ -68,10 +62,10 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-cyan/70">
-                Ask about Gaurav
+                {portfolio.chatbotUi.panelEyebrow}
               </p>
               <h3 className="flex items-center gap-2 text-sm font-medium text-white">
-                <Bot size={16} /> AI Assistant
+                <Bot size={16} /> {portfolio.chatbotUi.panelTitle}
               </h3>
             </div>
             <button
@@ -121,7 +115,7 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
                     submitQuestion();
                   }
                 }}
-                placeholder="Type a question..."
+                placeholder={portfolio.chatbotUi.inputPlaceholder}
                 className="flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-cyan/50"
               />
               <button
@@ -138,6 +132,7 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
         <button
           type="button"
           onClick={() => setOpen(true)}
+          aria-label={portfolio.chatbotUi.closedButtonLabel}
           className="group flex h-14 w-14 items-center justify-center rounded-full border border-cyan/30 bg-white/10 text-cyan shadow-glow backdrop-blur-xl transition hover:scale-105 hover:bg-white/15"
         >
           <MessageCircle

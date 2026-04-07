@@ -12,18 +12,6 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
-  const getScreenshotPath = (projectTitle: string) => {
-    if (projectTitle === "GoalTrackr") {
-      return assetPath("/images/projects-ss/GoalTracker-Project-ss.png");
-    }
-
-    if (projectTitle === "TicketFlix") {
-      return assetPath("/images/projects-ss/TicketFlix-Project-ss.png");
-    }
-
-    return assetPath("/images/projects-ss/AnimalsLover-Project-ss.png");
-  };
-
   return (
     <AnimatedSection
       id="projects"
@@ -57,7 +45,7 @@ export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
 
                 <div className="relative h-52 w-full bg-[#050b1f] sm:h-56 md:h-52 xl:h-56">
                   <img
-                    src={getScreenshotPath(project.title)}
+                    src={assetPath(project.image)}
                     alt={`${project.title} screenshot`}
                     className="h-full w-full object-contain object-center p-2 transition duration-700 group-hover:scale-[1.03]"
                     loading="lazy"

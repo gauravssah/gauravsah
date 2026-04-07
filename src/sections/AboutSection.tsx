@@ -31,47 +31,49 @@ export function AboutSection({ portfolio }: AboutSectionProps) {
           <div className="relative mx-auto flex max-w-md flex-col gap-6">
             <div className="flex items-center gap-4">
               <img
-                src={assetPath("/images/profile-portrait.jpg")}
-                alt="Gaurav Kumar profile"
+                src={assetPath(portfolio.media.profileImage)}
+                alt={portfolio.media.profileAlt}
                 className="h-24 w-24 rounded-2xl border border-white/10 object-cover shadow-glow"
               />
               <div>
                 <h3 className="text-2xl font-semibold text-white">
-                  Gaurav Kumar Sah
+                  {portfolio.hero.name}
                 </h3>
                 <p className="mt-1 text-sm text-cyan/80">
-                  Full-Stack Developer | Software Engineer Aspirant
+                  {portfolio.about.headline}
                 </p>
                 <p className="mt-1 text-xs uppercase tracking-[0.25em] text-white/45">
-                  India
+                  {portfolio.about.locationLabel}
                 </p>
               </div>
             </div>
 
             <img
-              src={assetPath("/images/profile-portrait.jpg")}
-              alt="Profile portrait"
+              src={assetPath(portfolio.media.profileImage)}
+              alt={portfolio.media.profileAlt}
               className="h-72 w-full rounded-[2rem] border border-white/10 object-cover shadow-glow transition duration-300 hover:rotate-[-1deg] hover:scale-[1.01]"
             />
 
             <div className="grid gap-3 md:grid-cols-2">
-              {[
-                {
-                  icon: BriefcaseBusiness,
-                  text: "Full-stack internship delivery",
-                },
-                { icon: GraduationCap, text: "B.Tech CSE (AI) + Diploma CSE" },
-                { icon: BadgeCheck, text: "MERN + REST API architecture" },
-                { icon: Sparkles, text: "Scalable UI + clean UX execution" },
-              ].map((item) => (
-                <div
-                  key={item.text}
-                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-white/80"
-                >
-                  <item.icon size={16} className="mt-0.5 shrink-0 text-cyan" />
-                  <span>{item.text}</span>
-                </div>
-              ))}
+              {portfolio.about.highlights.map((text, index) => {
+                const icons = [
+                  BriefcaseBusiness,
+                  GraduationCap,
+                  BadgeCheck,
+                  Sparkles,
+                ];
+                const Icon = icons[index % icons.length];
+
+                return (
+                  <div
+                    key={text}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-white/80"
+                  >
+                    <Icon size={16} className="mt-0.5 shrink-0 text-cyan" />
+                    <span>{text}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </GlassCard>
