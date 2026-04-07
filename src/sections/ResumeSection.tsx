@@ -2,6 +2,7 @@ import { Download } from "lucide-react";
 import { AnimatedSection } from "../components/AnimatedSection";
 import { GlassCard } from "../components/GlassCard";
 import { PortfolioData } from "../data/portfolio";
+import { assetPath } from "../utils/assetPath";
 
 type ResumeSectionProps = {
   portfolio: PortfolioData;
@@ -26,7 +27,7 @@ export function ResumeSection({ portfolio }: ResumeSectionProps) {
           </p>
         </div>
         <a
-          href={portfolio.resumeUrl}
+          href={assetPath(portfolio.resumeUrl)}
           download
           className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-neon to-cyan px-6 py-3 font-medium text-bg transition hover:opacity-90"
         >

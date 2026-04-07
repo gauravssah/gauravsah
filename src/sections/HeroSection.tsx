@@ -4,6 +4,7 @@ import { TypingText } from "../components/TypingText";
 import { GlassCard } from "../components/GlassCard";
 import { PortfolioData } from "../data/portfolio";
 import { HeroSkillsShowcase } from "../components/HeroSkillsShowcase";
+import { assetPath } from "../utils/assetPath";
 
 type HeroSectionProps = {
   portfolio: PortfolioData;
@@ -82,7 +83,7 @@ export function HeroSection({ portfolio }: HeroSectionProps) {
               {portfolio.heroUi.secondaryButtonLabel} <Mail size={18} />
             </a>
             <a
-              href={portfolio.resumeUrl}
+              href={assetPath(portfolio.resumeUrl)}
               download
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 transition hover:border-cyan/40 hover:bg-white/10 md:w-auto md:px-6 md:text-base"
             >
