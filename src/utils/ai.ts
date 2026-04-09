@@ -1,5 +1,181 @@
 import { chatbotKnowledge, Project, PortfolioData } from "../data/portfolio";
 
+function normalizeQuestion(input: string) {
+  return input
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function includesAny(text: string, keywords: string[]) {
+  return keywords.some((keyword) => text.includes(keyword));
+}
+
+function getTopItems(items: string[], limit = 5) {
+  return items.slice(0, limit).join(", ");
+}
+
+function formatList(items: string[]) {
+  return items.map((item) => `- ${item}`).join("\n");
+}
+
+function findAskedProject(question: string, portfolio: PortfolioData) {
+  const normalized = normalizeQuestion(question);
+  return portfolio.projects.find((project) => {
+    const title = project.title.toLowerCase();
+    const aliases = title
+      .replace(/official website/g, "")
+      .split(/\s+/)
+      .filter((word) => word.length > 3);
+
+    return (
+      normalized.includes(title) ||
+      aliases.some((alias) => normalized.includes(alias))
+    );
+  });
+}
+
+function buildIntroResponse(portfolio: PortfolioData) {
+  return [
+    `${portfolio.hero.name} is a ${portfolio.about.headline}.`,
+    portfolio.hero.intro,
+    "",
+    "Quick highlights:",
+    formatList(portfolio.hero.highlights),
+  ].join("\n");
+}
+
+function buildSkillsResponse(portfolio: PortfolioData) {
+  const skillBlocks = portfolio.skills
+    .map((skill) => `- ${skill.title}: ${getTopItems(skill.items, 6)}`)
+    .join("\n");
+
+  return [
+    `${portfolio.hero.name} works across frontend, backend, and product-focused engineering.`,
+    "",
+    "Core technical skills:",
+    skillBlocks,
+    "",
+    `Soft skills: ${portfolio.softSkills.join(", ")}.`,
+  ].join("\n");
+}
+
+function buildProjectsResponse(portfolio: PortfolioData) {
+  const details = portfolio.projects
+    .map(
+      (project) =>
+        `- ${project.title}: ${project.description}\n  Tech: ${project.tech.join(", ")}\n  Live: ${project.live}`,
+    )
+    .join("\n");
+
+  return [
+    "Featured projects:",
+    details,
+    "",
+    "If you want, ask about a specific project name for a deeper breakdown.",
+  ].join("\n");
+}
+
+function buildProjectSpecificResponse(project: Project) {
+  return [
+    `${project.title} overview:`,
+    project.description,
+    "",
+    `Tech stack: ${project.tech.join(", ")}.`,
+    `GitHub: ${project.github}`,
+    `Live: ${project.live}`,
+  ].join("\n");
+}
+
+function buildExperienceResponse(portfolio: PortfolioData) {
+  const internshipLines = portfolio.experience
+    .map((item) => {
+      const keyPoints = item.points.slice(0, 2).join(" ");
+      return `- ${item.title} at ${item.company} (${item.period}): ${keyPoints}`;
+    })
+    .join("\n");
+
+  return [
+    `Internship and work experience summary (${portfolio.experience.length} roles):`,
+    internshipLines,
+    "",
+    "Ask me any role name for complete point-wise details.",
+  ].join("\n");
+}
+
+function buildRoleSpecificExperienceResponse(
+  portfolio: PortfolioData,
+  normalized: string,
+) {
+  const role = portfolio.experience.find((item) => {
+    const title = item.title.toLowerCase();
+    const company = item.company.toLowerCase();
+    return normalized.includes(title) || normalized.includes(company);
+  });
+
+  if (!role) {
+    return null;
+  }
+
+  return [
+    `${role.title} - ${role.company} (${role.period})`,
+    "",
+    "Responsibilities and outcomes:",
+    formatList(role.points),
+  ].join("\n");
+}
+
+function buildEducationResponse(portfolio: PortfolioData) {
+  const lines = portfolio.education
+    .map(
+      (item) =>
+        `- ${item.title}, ${item.institution} (${item.year}) - ${item.detail}`,
+    )
+    .join("\n");
+
+  return [`Education details:`, lines].join("\n");
+}
+
+function buildCertificatesResponse(portfolio: PortfolioData) {
+  const sample = portfolio.certificates.slice(0, 8).map((cert) => cert.title);
+  return [
+    `${portfolio.hero.name} has ${portfolio.certificates.length}+ certifications across CS fundamentals, cloud, Linux, and web development.`,
+    "",
+    "Top certifications:",
+    formatList(sample),
+  ].join("\n");
+}
+
+function buildContactResponse(portfolio: PortfolioData) {
+  return [
+    "Contact details:",
+    `- Email: ${portfolio.contact.email}`,
+    `- Phone: ${portfolio.contact.phone}`,
+    `- Location: ${portfolio.contact.location}`,
+    `- LinkedIn: ${portfolio.socials.find((social) => social.label.toLowerCase() === "linkedin")?.url ?? "Not listed"}`,
+    `- GitHub: ${portfolio.socials.find((social) => social.label.toLowerCase() === "github")?.url ?? "Not listed"}`,
+  ].join("\n");
+}
+
+function buildResumeResponse(portfolio: PortfolioData) {
+  return [
+    "Resume is available in the Resume section.",
+    `Direct file path: ${portfolio.resumeUrl}`,
+    "Click the Download Resume button to download it instantly.",
+  ].join("\n");
+}
+
+function buildAchievementsResponse() {
+  return [
+    "Key strengths and highlights:",
+    formatList(chatbotKnowledge.strengths),
+    "",
+    "Notable achievements:",
+    formatList(chatbotKnowledge.achievements),
+  ].join("\n");
+}
+
 export function generateProjectDescription(title: string, techText: string) {
   const tech = techText
     .split(",")
@@ -20,117 +196,187 @@ export function answerPortfolioQuestion(
   question: string,
   portfolio: PortfolioData,
 ) {
-  const normalized = question.toLowerCase();
+  const normalized = normalizeQuestion(question);
 
-  const topSkills = portfolio.skills
-    .flatMap((skill) => skill.items)
-    .slice(0, 8)
-    .join(", ");
-
-  const projectsList = portfolio.projects
-    .map((project) => project.title)
-    .join(", ");
-
-  const topProjectTitles = portfolio.projects
-    .slice(0, 3)
-    .map((project) => project.title)
-    .join(", ");
-
-  const latestExperience = portfolio.experience[0];
-
-  const askedProject = portfolio.projects.find((project) =>
-    normalized.includes(project.title.toLowerCase()),
+  const askedProject = findAskedProject(question, portfolio);
+  const roleSpecific = buildRoleSpecificExperienceResponse(
+    portfolio,
+    normalized,
   );
 
+  if (roleSpecific) {
+    return roleSpecific;
+  }
+
   if (askedProject) {
-    return `${askedProject.title}: ${askedProject.description} Tech stack includes ${askedProject.tech.join(", ")}. Live: ${askedProject.live}.`;
+    return buildProjectSpecificResponse(askedProject);
   }
 
   if (
-    normalized.includes("who") ||
-    normalized.includes("about") ||
-    normalized.includes(
-      portfolio.hero.name.toLowerCase().split(" ")[0] || "",
-    ) ||
-    normalized.includes("introduce")
+    includesAny(normalized, [
+      "who",
+      "about",
+      "introduce",
+      "profile",
+      "kaun",
+      "kon",
+      "intro",
+      "apna",
+      "batao",
+      "apke bare",
+      "tumhare bare",
+    ])
   ) {
-    return `${chatbotKnowledge.name} is a ${chatbotKnowledge.role}. ${chatbotKnowledge.headline}. ${chatbotKnowledge.availability}`;
+    return buildIntroResponse(portfolio);
   }
 
   if (
-    normalized.includes("skill") ||
-    normalized.includes("tech") ||
-    normalized.includes("stack")
+    includesAny(normalized, [
+      "skill",
+      "tech",
+      "stack",
+      "tools",
+      "technology",
+      "technologies",
+      "kis tech",
+      "kya aata",
+      "expertise",
+    ])
   ) {
-    return `${chatbotKnowledge.name} works with ${chatbotKnowledge.skills.join(", ")}. Core categories: ${portfolio.skills.map((skill) => skill.title).join(", ")}. Top tools right now: ${topSkills}.`;
-  }
-
-  if (normalized.includes("project") || normalized.includes("build")) {
-    return `Highlighted projects are ${projectsList}. Top featured builds include ${topProjectTitles}.`;
+    return buildSkillsResponse(portfolio);
   }
 
   if (
-    normalized.includes("experience") ||
-    normalized.includes("internship") ||
-    normalized.includes("work")
+    includesAny(normalized, [
+      "project",
+      "build",
+      "portfolio project",
+      "banaya",
+      "banaye",
+      "kaam",
+    ])
   ) {
-    return `Experience includes ${chatbotKnowledge.experience}. Latest role: ${latestExperience?.title ?? "Intern"} at ${latestExperience?.company ?? "a product team"} (${latestExperience?.period ?? "recent"}).`;
+    return buildProjectsResponse(portfolio);
   }
 
   if (
-    normalized.includes("education") ||
-    normalized.includes("college") ||
-    normalized.includes("cgpa")
+    includesAny(normalized, [
+      "experience",
+      "internship",
+      "work",
+      "job",
+      "intern",
+      "anubhav",
+      "tajurba",
+      "staj",
+    ])
   ) {
-    return `Education: ${chatbotKnowledge.education}. Previous academic records include diploma and intermediate science, with consistent performance.`;
+    return buildExperienceResponse(portfolio);
   }
 
   if (
-    normalized.includes("contact") ||
-    normalized.includes("email") ||
-    normalized.includes("phone") ||
-    normalized.includes("location")
+    includesAny(normalized, [
+      "education",
+      "college",
+      "cgpa",
+      "degree",
+      "school",
+      "academics",
+      "padhai",
+      "qualification",
+    ])
   ) {
-    return `You can contact ${chatbotKnowledge.name} at ${chatbotKnowledge.email} or ${chatbotKnowledge.phone}. Location: ${chatbotKnowledge.location}.`;
-  }
-
-  if (normalized.includes("resume") || normalized.includes("cv")) {
-    return `Resume is available in the Resume section and can be downloaded directly from this portfolio.`;
+    return buildEducationResponse(portfolio);
   }
 
   if (
-    normalized.includes("strength") ||
-    normalized.includes("special") ||
-    normalized.includes("focus")
+    includesAny(normalized, [
+      "certificate",
+      "certification",
+      "certificates",
+      "nptel",
+      "aws",
+      "linux",
+      "praman",
+      "certificate list",
+    ])
   ) {
-    return `Core strengths: ${chatbotKnowledge.strengths.join(", ")}. Current focus areas: ${chatbotKnowledge.focusAreas.join(", ")}.`;
+    return buildCertificatesResponse(portfolio);
   }
 
   if (
-    normalized.includes("achievement") ||
-    normalized.includes("accomplishment") ||
-    normalized.includes("highlight")
+    includesAny(normalized, [
+      "contact",
+      "email",
+      "phone",
+      "location",
+      "linkedin",
+      "github",
+      "reach",
+      "sampark",
+      "number",
+      "mobile",
+      "mail",
+    ])
   ) {
-    return `Notable highlights: ${chatbotKnowledge.achievements.join(" | ")}.`;
+    return buildContactResponse(portfolio);
   }
 
-  if (normalized.includes("language") || normalized.includes("speak")) {
+  if (includesAny(normalized, ["resume", "cv", "biodata", "download resume"])) {
+    return buildResumeResponse(portfolio);
+  }
+
+  if (
+    includesAny(normalized, [
+      "strength",
+      "special",
+      "focus",
+      "achievement",
+      "accomplishment",
+      "highlight",
+      "why hire",
+    ])
+  ) {
+    return buildAchievementsResponse();
+  }
+
+  if (includesAny(normalized, ["language", "speak", "hindi", "english"])) {
     return `${chatbotKnowledge.name} communicates in ${chatbotKnowledge.languages.join(" and ")}.`;
   }
 
   if (
-    normalized.includes("learning") ||
-    normalized.includes("currently") ||
-    normalized.includes("preparing")
+    includesAny(normalized, [
+      "learning",
+      "currently",
+      "preparing",
+      "study",
+      "roadmap",
+    ])
   ) {
     return `Current learning focus: ${chatbotKnowledge.learningNow.join(", ")}. ${chatbotKnowledge.codingPractice}`;
   }
 
-  if (normalized.includes("hire") || normalized.includes("available")) {
+  if (
+    includesAny(normalized, [
+      "hire",
+      "available",
+      "opportunity",
+      "open to work",
+    ])
+  ) {
     return chatbotKnowledge.availability;
   }
 
-  return `I can help with detailed information about ${chatbotKnowledge.name}: skills, projects, internships, education, contact details, and resume.`;
+  return [
+    `I can give detailed and accurate information about ${chatbotKnowledge.name}.`,
+    "Try asking one of these:",
+    "- Introduce yourself",
+    "- Explain GoalTrackr project in detail",
+    "- Share all internships with responsibilities",
+    "- Show education and CGPA",
+    "- List top certifications",
+    "- Share contact details and resume",
+  ].join("\n");
 }
 
 export function summarizeTechStack(project: Project) {

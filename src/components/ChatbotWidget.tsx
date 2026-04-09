@@ -85,8 +85,8 @@ export function ChatbotWidget({ portfolio }: ChatbotWidgetProps) {
                 key={`${entry.role}-${index}`}
                 className={
                   entry.role === "user"
-                    ? "ml-8 rounded-2xl bg-cyan/12 px-3 py-2 text-sm text-white"
-                    : "mr-8 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted"
+                    ? "ml-8 whitespace-pre-line rounded-2xl bg-cyan/12 px-3 py-2 text-sm text-white"
+                    : "mr-8 whitespace-pre-line rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted"
                 }
               >
                 {entry.content}

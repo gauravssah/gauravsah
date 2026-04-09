@@ -19,8 +19,8 @@ export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
     >
       <SectionHeading
         eyebrow="Projects"
-        title="Projects I built while learning"
-        description="A compact look at the personal and production projects that shaped my full-stack journey."
+        title="Projects I Built"
+        description="A compact look at personal and production projects that shaped my full-stack journey."
       />
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {portfolio.projects.map((project, index) => (
@@ -36,7 +36,9 @@ export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg via-bg/20 to-transparent" />
                 <div className="absolute inset-x-4 top-4 z-20 flex items-center justify-between">
                   <span className="rounded-full border border-white/15 bg-bg/60 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-cyan/80 backdrop-blur-md">
-                    Learning project
+                    {project.title.toLowerCase().includes("animalslover")
+                      ? "Production project"
+                      : "Personal project"}
                   </span>
                   <span className="rounded-full border border-white/15 bg-bg/60 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-white/70 backdrop-blur-md">
                     {index + 1} / {portfolio.projects.length}

@@ -135,13 +135,13 @@ export const chatbotKnowledge = {
     "Product-focused execution",
   ],
   experience:
-    "5 internships across startup product engineering and government digitization workflows",
+    "4 internships across startup product engineering, government digitization, and Salesforce workflows",
   education: "B.Tech CSE (AI), Bihar Engineering University (CGPA 8.68)",
   internshipHighlights: [
     "Revenue Digitization Intern at Revenue and Land Reforms Department, Government of Bihar",
-    "Web Developer internships at Animalslover with performance and architecture improvements",
-    "Web Development and Designing Internship at Oasis Infobyte",
-    "Salesforce Developer Virtual Internship",
+    "Web Developer Intern (2nd Term) at Animalslover focused on scalable pages and reusable React components",
+    "Web Developer Intern (1st Term) at Animalslover focused on website development from scratch and Figma-to-code implementation",
+    "Salesforce Developer Internship",
   ],
   projects: ["GoalTrackr", "TicketFlix", "Animalslover Website"],
   projectHighlights: {
@@ -161,7 +161,7 @@ export const chatbotKnowledge = {
     "Real-world workflow problem solving",
   ],
   achievements: [
-    "Improved Lighthouse performance by 30%+ during internship delivery",
+    "Built and shipped production-ready website modules across multiple internships",
     "Built multiple production-ready projects with end-to-end full-stack flows",
     "Maintains strong academic record with B.Tech CGPA 8.68",
   ],
@@ -244,7 +244,7 @@ export const defaultPortfolio: PortfolioData = {
     resumeButtonLabel: "Download Resume",
   },
   about: {
-    headline: "Full-Stack Developer | Software Engineer Aspirant",
+    headline: "Full-Stack Developer | Software Engineer ",
     locationLabel: "India",
     highlights: [
       "Full-stack internship delivery",
@@ -311,6 +311,15 @@ export const defaultPortfolio: PortfolioData = {
   ],
   projects: [
     {
+      title: "Animalslover Official Website",
+      description:
+        "Developed and maintained the official startup website with reusable architecture, responsive layouts, and performance-focused UI updates for production use.",
+      tech: ["React.js", "Next.js", "Tailwind CSS", "Component Architecture"],
+      github: "https://github.com/gauravssah",
+      live: "https://www.animalslover.in",
+      image: "/images/projects-ss/AnimalsLover-Project-ss.png",
+    },
+    {
       title: "GoalTrackr",
       description:
         "A full-stack productivity and life-planning workspace for tasks, goal tracking, job applications, journaling, search, and profile management. Built with a modern frontend, Express API, MongoDB, JWT auth, and responsive dashboard flows.",
@@ -344,15 +353,6 @@ export const defaultPortfolio: PortfolioData = {
       live: "https://ticketflix-eight.vercel.app",
       image: "/images/projects-ss/TicketFlix-Project-ss.png",
     },
-    {
-      title: "Animalslover Official Website",
-      description:
-        "Developed and maintained the official startup website with reusable architecture, responsive layouts, and performance-focused UI updates for production use.",
-      tech: ["React.js", "Next.js", "Tailwind CSS", "Component Architecture"],
-      github: "https://github.com/gauravssah",
-      live: "https://www.animalslover.in",
-      image: "/images/projects-ss/AnimalsLover-Project-ss.png",
-    },
   ],
   experience: [
     {
@@ -368,41 +368,31 @@ export const defaultPortfolio: PortfolioData = {
       ],
     },
     {
-      title: "Web Developer (Second Internship)",
+      title: "Web Developer Intern (2nd Term)",
       company: "Animalslover",
       period: "May 2025 - Jun 2025",
       points: [
-        "Redesigned key Next.js modules and improved Lighthouse performance by 30%+.",
-        "Implemented advanced React hooks, dynamic routing, and cleaner component structure.",
-        "Improved user experience with UI refinements based on real feedback.",
-        "Contributed to sprint planning, product discussions, and release improvements.",
-        "Reduced development turnaround by introducing reusable layout patterns.",
+        "Built 10+ new pages and reusable components using React.js, Next.js, and Tailwind CSS.",
+        "Reduced page build turnaround time by approximately 25% through reusable component-driven development.",
+        "Improved navigation structure and UI layouts to increase UX consistency across the live platform (animalslover.in).",
+        "Worked on existing modules and new feature pages while maintaining design consistency and clean code quality.",
+        "Collaborated with the team for iterative updates and production releases.",
       ],
     },
     {
-      title: "Web Developer Intern (First Internship)",
+      title: "Web Developer Intern (1st Term)",
       company: "Animalslover",
       period: "May 2024 - Jul 2024",
       points: [
-        "Built 10+ reusable UI components with React.js and Next.js.",
-        "Converted Figma designs into responsive, production-ready web pages.",
-        "Fixed 20+ UI issues and improved rendering/performance by around 25%.",
-        "Worked with GitHub branching, pull requests, and collaborative review cycles.",
-        "Refactored hooks and component logic to improve code reusability.",
+        "Designed and developed the company website from scratch using React.js and Next.js.",
+        "Converted 10+ Figma designs into pixel-perfect, responsive web interfaces.",
+        "Built 15+ reusable UI components, reducing future development time by approximately 30%.",
+        "Implemented responsive layouts and reusable frontend structure for faster feature development.",
+        "Followed collaborative workflows with version control and regular development iterations.",
       ],
     },
     {
-      title: "Web Development and Designing Intern",
-      company: "Oasis Infobyte",
-      period: "Dec 2023 - Jan 2024",
-      points: [
-        "Completed AICTE OIB-SIP internship and built mini-projects including landing pages and converter tools.",
-        "Received recommendation and star performer recognition for delivery quality.",
-        "Practiced HTML, CSS, JavaScript, and Git workflows in real project submissions.",
-      ],
-    },
-    {
-      title: "Salesforce Developer (Virtual Internship)",
+      title: "Salesforce Developer Intern",
       company: "Salesforce",
       period: "Dec 2023 - Jan 2024",
       points: [
@@ -414,11 +404,11 @@ export const defaultPortfolio: PortfolioData = {
   ],
   experienceHighlights: [
     {
-      value: "5",
+      value: "4",
       label: "internships completed",
     },
     {
-      value: "2",
+      value: "3",
       label: "domains explored",
     },
     {
@@ -427,7 +417,7 @@ export const defaultPortfolio: PortfolioData = {
     },
   ],
   experienceFocusTags: [
-    "Startup delivery",
+    "Product delivery",
     "Government workflows",
     "React",
     "Next.js",
@@ -579,11 +569,11 @@ export const defaultPortfolio: PortfolioData = {
     closedButtonLabel: "Open assistant",
   },
   resumeSection: {
-    eyebrow: "Profile PDF",
-    title: "Download Linked profile details",
+    eyebrow: "Resume PDF",
+    title: "Download My Resume",
     description:
-      "Use this PDF to review detailed summary, certifications, projects, and complete internship experience.",
-    buttonLabel: "Download Profile PDF",
+      "Use this resume to review my professional summary, technical skills, certifications, key projects, and complete internship experience.",
+    buttonLabel: "Download Resume",
   },
   socials: [
     { label: "GitHub", url: "https://github.com/gauravssah" },
@@ -592,5 +582,5 @@ export const defaultPortfolio: PortfolioData = {
     { label: "X", url: "https://x.com/gauravssah" },
   ],
   resumeUrl: "/Gaurav_Resume.pdf",
-  footerNote: "All rights reserved. Developed with love.",
+  footerNote: "All rights reserved. Developed with ❤️",
 };
