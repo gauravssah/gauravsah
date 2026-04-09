@@ -292,6 +292,7 @@ export const defaultPortfolio: PortfolioData = {
         "Java",
         "C",
         "C++",
+        "Python",
         "AWS Cloud",
         "Git",
         "GitHub",
@@ -436,7 +437,7 @@ export const defaultPortfolio: PortfolioData = {
       title: "B.Tech - Computer Science and Engineering (AI)",
       institution: "Bihar Engineering University, Patna",
       year: "2023 - 2026",
-      detail: "Current CGPA: 8.68",
+      detail: "Current CGPA: 8.57",
     },
     {
       title: "Diploma - Computer Science and Engineering",
@@ -457,28 +458,107 @@ export const defaultPortfolio: PortfolioData = {
       detail: "76.6%",
     },
   ],
+
   certificates: [
     {
+      title:
+        "NPTEL Online Certification – Introduction to Operating Systems (Elite Top 5%)",
+      image:
+        "/images/certificates/NPTEL Online Certification – Introduction to Operating Systems.png",
+    },
+    {
+      title: "Computer Networks – takeUforward",
+      image: "/images/certificates/Certificate Computer Networks tuf.png",
+    },
+    {
+      title: "Operating System – takeUforward",
+      image: "/images/certificates/Operating System TUF.png",
+    },
+    {
+      title: "NPTEL Online Certification – Cloud Computing",
+      image:
+        "/images/certificates/NPTEL Online Certification – Cloud Computing.png",
+    },
+
+    // Linux Essentials (2 files)
+    {
+      title: "Linux Essentials Certification – Cisco Networking Academy",
+      image:
+        "/images/certificates/Linux Essentials Certification Certificates.png",
+    },
+    {
+      title: "Linux Essentials – Statement of Achievement",
+      image:
+        "/images/certificates/Linux Essentials Certification Statement of achivement.png",
+    },
+
+    // Linux Unhatched (2 files)
+    {
+      title: "Linux Unhatched – Cisco Networking Academy",
+      image: "/images/certificates/Linux Unhatched Certificate.png",
+    },
+    {
+      title: "Linux Unhatched – Statement of Achievement",
+      image: "/images/certificates/Statement of Achievement.png",
+    },
+
+    {
+      title: "Startup India Learning Program – Invest India",
+      image: "/images/certificates/Startup India Learning Program.png",
+    },
+    {
+      title: "Contentstack for Developers + Launch Certification",
+      image: "/images/certificates/Contentstack for Developers + Launch.png",
+    },
+    {
+      title: "Cisco Cybersecurity Essentials (AICTE Internship)",
+      image:
+        "/images/certificates/AICTE-CISCO INTERNSHIP_DST BIHAR_CYBERSECURITY ESSENTIALS.png",
+    },
+
+    // AWS (2 files)
+    {
+      title: "Cloud Computing with AWS – Internshala",
+      image: "/images/certificates/Cloud computing with AWS.png",
+    },
+    {
+      title: "Cloud Computing with AWS Training",
+      image: "/images/certificates/Cloud computing with AWS Training.png",
+    },
+
+    {
+      title: "What Is Generative AI? – LinkedIn Learning",
+      image: "/images/certificates/What Is Generative AI Linkedin.png",
+    },
+
+    // Udemy Courses
+    {
       title: "Learn Complete Front-End Web Development Course (2022)",
-      image: "/images/certificates/Certificate Computer Networks.png",
+      image:
+        "/images/certificates/Learn Complete Front-End Web Development Course Udemy.png",
     },
     {
-      title: "NPTEL Online Certification - Introduction to Operating Systems",
-      image: "/images/certificates/Nptel Operating Systems Certificate.png",
+      title: "Advanced Web Developer Course – Beginner to Advanced",
+      image:
+        "/images/certificates/Advanced Web Developer Course - Beginner to Advanced.png",
     },
     {
-      title: "Learn HTML, CSS, JavaScript",
-      image: "/images/certificates/Certificate Computer Networks.png",
+      title: "The Complete ReactJs Course – Basics to Advanced",
+      image:
+        "/images/certificates/The Complete ReactJs Course - Basics to Advanced Udemy.png",
     },
     {
-      title: "NPTEL Online Certification - Cloud Computing",
-      image: "/images/certificates/Certificate Computer Networks.png",
+      title: "JavaScript – Basics to Advanced Step by Step",
+      image:
+        "/images/certificates/JavaScript - Basics to Advanced step by step udemy.png",
     },
     {
-      title: "JavaScript - Basics to Advanced Step by Step",
-      image: "/images/certificates/Nptel Operating Systems Certificate.png",
+      title: "Modern JavaScript for Beginners + Projects",
+      image:
+        "/images/certificates/Modern Javascript for Beginners  Javascript Projects udemy.png",
     },
   ],
+
   contact: {
     email: "gauravssah01@gmail.com",
     phone: "+91 6201219705",

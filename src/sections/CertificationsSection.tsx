@@ -54,7 +54,7 @@ export function CertificationsSection({
       <SectionHeading
         eyebrow="Certifications"
         title="Verified learning and credentials"
-        description="Industry and course certifications that reflect continuous learning in frontend engineering, cloud concepts, and software development fundamentals."
+        description="Industry and course certifications that reflect continuous learning."
       />
 
       <GlassCard className="relative overflow-hidden p-0">

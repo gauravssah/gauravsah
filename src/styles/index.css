@@ -84,7 +84,7 @@ img {
 }
 
 .certificate-marquee {
-    animation: certificateMarquee 28s linear infinite;
+    animation: certificateMarquee 80s linear infinite;
 }
 
 .certificate-marquee:hover {
