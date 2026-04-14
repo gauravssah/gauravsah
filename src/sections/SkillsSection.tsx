@@ -39,17 +39,17 @@ export function SkillsSection({ portfolio }: SkillsSectionProps) {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
-        className="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
       >
         {portfolio.skills.map((skill) => {
-          const Icon =
-            skill.title === "Frontend"
-              ? Code2
-              : skill.title === "Backend"
-                ? Server
-                : skill.title === "AI/ML"
-                  ? BrainCircuit
-                  : Wrench;
+          const title = skill.title.toLowerCase();
+          const Icon = title.includes("frontend")
+            ? Code2
+            : title.includes("backend") || title.includes("api")
+              ? Server
+              : title.includes("ai") || title.includes("ml")
+                ? BrainCircuit
+                : Wrench;
 
           return (
             <motion.div

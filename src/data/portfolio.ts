@@ -143,8 +143,15 @@ export const chatbotKnowledge = {
     "Web Developer Intern (1st Term) at Animalslover focused on website development from scratch and Figma-to-code implementation",
     "Salesforce Developer Internship",
   ],
-  projects: ["GoalTrackr", "TicketFlix", "Animalslover Website"],
+  projects: [
+    "GoalTrackr",
+    "TicketFlix",
+    "Animalslover Website",
+    "HealthVision AI",
+  ],
   projectHighlights: {
+    "HealthVision AI":
+      "AI-powered multi-disease screening web app using TensorFlow, Flask, and OpenCV with eye, skin, and nail detection modules plus a health assistant flow.",
     GoalTrackr:
       "Full-stack productivity workspace with tasks, goal tracking, journal, job tracking, and JWT-based auth.",
     TicketFlix:
@@ -172,7 +179,7 @@ export const chatbotKnowledge = {
 export const defaultPortfolio: PortfolioData = {
   hero: {
     name: "Gaurav Kumar Sah",
-    role: "Full-Stack Developer | MERN Stack | JavaScript | Java | AWS Cloud",
+    role: "Full-Stack Developer | MERN Stack | AI/ML | Computer Vision | AWS Cloud",
     intro:
       "Turning ideas into scalable web applications, one clean line of code at a time. I build fast, user-focused digital products with React, Next.js, Node.js, and MongoDB, while strengthening software engineering depth through DSA and system design.",
     highlights: [
@@ -188,7 +195,7 @@ export const defaultPortfolio: PortfolioData = {
     certificateFallbackImage: "/images/profile-portrait.jpg",
   },
   navigation: {
-    subtitle: "MERN Stack Developer",
+    subtitle: "Full-Stack Developer | MERN + AI/ML",
     links: [
       { label: "About", href: "#about" },
       { label: "Skills", href: "#skills" },
@@ -201,10 +208,10 @@ export const defaultPortfolio: PortfolioData = {
   heroUi: {
     badgeText: "Gaurav Kumar Sah portfolio",
     typedLines: [
-      "Building scalable web applications.",
-      "MERN stack with clean architecture.",
-      "Fast UI, robust APIs, strong DSA mindset.",
-      "Focused on real product impact.",
+      "Building scalable web applications and AI-powered health solutions.",
+      "MERN stack, Flask APIs, and TensorFlow-based workflows.",
+      "Fast UI, robust APIs, computer vision, and strong DSA mindset.",
+      "Focused on real product impact through full-stack + AI delivery.",
     ],
     movingSkills: [
       "React.js",
@@ -213,10 +220,17 @@ export const defaultPortfolio: PortfolioData = {
       "Express.js",
       "MongoDB",
       "REST APIs",
+      "TensorFlow",
+      "Keras",
+      "OpenCV",
+      "Computer Vision",
       "JavaScript",
       "Java",
       "AWS Cloud",
       "DSA",
+      "OS",
+      "DBMS",
+      "CN",
     ],
     movingSkillsReverse: [
       "Problem Solving",
@@ -229,22 +243,26 @@ export const defaultPortfolio: PortfolioData = {
       "Collaboration",
       "API Integration",
       "Cloud Ready",
+      "Transfer Learning",
+      "Medical Image Classification",
+      "Flask + TensorFlow",
+      "AI Model Integration",
     ],
     focusLine: "Focused on scalable full-stack delivery",
     floatingSkills: [
       "React + Next.js",
       "Node + Express",
       "MongoDB + APIs",
-      "AI Workflows",
+      "AI + ML Workflows",
       "System Design",
-      "Clean Architecture",
+      "TensorFlow + OpenCV",
     ],
     primaryButtonLabel: "View Projects",
     secondaryButtonLabel: "Contact Me",
     resumeButtonLabel: "Download Resume",
   },
   about: {
-    headline: "Full-Stack Developer | Software Engineer ",
+    headline: "Full-Stack Developer | Software Engineer | AI/ML Enthusiast",
     locationLabel: "India",
     highlights: [
       "Full-stack internship delivery",
@@ -264,7 +282,7 @@ export const defaultPortfolio: PortfolioData = {
   },
   skills: [
     {
-      title: "Frontend",
+      title: "Frontend Engineering",
       items: [
         "React.js",
         "Next.js",
@@ -272,33 +290,74 @@ export const defaultPortfolio: PortfolioData = {
         "CSS3",
         "Tailwind CSS",
         "Bootstrap",
+        "JavaScript (ES6+)",
       ],
       progress: 94,
     },
     {
-      title: "Backend",
-      items: ["Node.js", "Express.js", "REST APIs", "MongoDB", "Mongoose"],
+      title: "Backend & APIs",
+      items: [
+        "Node.js",
+        "Express.js",
+        "REST APIs",
+        "MongoDB",
+        "Mongoose",
+        "Flask",
+        "Flask-CORS",
+      ],
       progress: 90,
     },
     {
-      title: "AI/ML",
-      items: ["AI Integration", "Automation Workflows", "Prompt Engineering"],
-      progress: 80,
+      title: "AI/ML & Computer Vision",
+      items: [
+        "TensorFlow",
+        "Keras",
+        "Transfer Learning",
+        "OpenCV",
+        "Image Preprocessing (CLAHE, Bilateral Filter)",
+        "Medical Image Classification",
+      ],
+      progress: 86,
     },
     {
-      title: "Tools",
+      title: "Cloud, Deployment & DevOps",
+      items: [
+        "AWS Cloud",
+        "Render",
+        "Gunicorn",
+        "Vercel",
+        "GitHub Actions (Basics)",
+        "Environment Config",
+      ],
+      progress: 84,
+    },
+    {
+      title: "Languages & Core CS",
       items: [
         "JavaScript",
+        "TypeScript",
         "Java",
+        "Python",
         "C",
         "C++",
-        "Python",
-        "AWS Cloud",
+        "Data Structures & Algorithms",
+        "Operating Systems (OS)",
+        "Database Management System (DBMS)",
+        "Computer Networks (CN)",
+      ],
+      progress: 92,
+    },
+    {
+      title: "Tools & Workflow",
+      items: [
         "Git",
         "GitHub",
         "Postman",
+        "VS Code",
+        "Figma to Code",
+        "Responsive UI Testing",
       ],
-      progress: 92,
+      progress: 90,
     },
   ],
   softSkills: [
@@ -352,6 +411,24 @@ export const defaultPortfolio: PortfolioData = {
       github: "https://github.com/gauravssah/TicketFlix",
       live: "https://ticketflix-eight.vercel.app",
       image: "/images/projects-ss/TicketFlix-Project-ss.png",
+    },
+    {
+      title: "HealthVision AI",
+      description:
+        "AI-powered multi-disease health detection system with Eye/Jaundice, Face/Skin, and Nail analysis modules using deep learning + computer vision. Includes upload/camera workflows, confidence-based predictions, detailed health insights, AI assistant support, and Render-ready deployment hardening.",
+      tech: [
+        "Python",
+        "Flask",
+        "TensorFlow",
+        "Keras",
+        "OpenCV",
+        "HTML/CSS/JavaScript",
+        "Gunicorn",
+        "Render",
+      ],
+      github: "https://github.com/gauravssah/HealthVision-AI",
+      live: "https://healthvision-ai-1enh.onrender.com/",
+      image: "/images/projects-ss/HealthVision_Project-ss.png",
     },
   ],
   experience: [

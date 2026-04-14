@@ -97,7 +97,7 @@ export function ProjectsSection({ portfolio }: ProjectsSectionProps) {
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-neon to-cyan px-4 py-2 text-sm font-medium text-bg transition hover:opacity-90"
                   >
-                    Live Demo <ExternalLink size={16} />
+                    Live Link <ExternalLink size={16} />
                   </a>
                 </div>
               </div>

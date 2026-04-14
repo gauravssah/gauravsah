@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Download, Mail, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  Download,
+  Mail,
+  Sparkles,
+} from "lucide-react";
 import { TypingText } from "../components/TypingText";
 import { GlassCard } from "../components/GlassCard";
 import { PortfolioData } from "../data/portfolio";
