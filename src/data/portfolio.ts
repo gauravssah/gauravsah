@@ -179,7 +179,7 @@ export const chatbotKnowledge = {
 export const defaultPortfolio: PortfolioData = {
   hero: {
     name: "Gaurav Kumar Sah",
-    role: "Full-Stack Developer | MERN Stack | AI/ML | Computer Vision | AWS Cloud",
+    role: "Full-Stack Developer | MERN Stack | AI/ML | Java | Computer Vision | AWS Cloud",
     intro:
       "Turning ideas into scalable web applications, one clean line of code at a time. I build fast, user-focused digital products with React, Next.js, Node.js, and MongoDB, while strengthening software engineering depth through DSA and system design.",
     highlights: [
@@ -208,10 +208,21 @@ export const defaultPortfolio: PortfolioData = {
   heroUi: {
     badgeText: "Gaurav Kumar Sah portfolio",
     typedLines: [
-      "Building scalable web applications and AI-powered health solutions.",
-      "MERN stack, Flask APIs, and TensorFlow-based workflows.",
-      "Fast UI, robust APIs, computer vision, and strong DSA mindset.",
-      "Focused on real product impact through full-stack + AI delivery.",
+      "React UIs that feel fast.",
+      "Next.js pages built for scale.",
+      "Node.js APIs with clean architecture.",
+      "MongoDB data flows that stay reliable.",
+      "TypeScript code that stays maintainable.",
+      "Express services with robust REST APIs.",
+      "Tailwind-powered responsive UI systems.",
+      "TensorFlow models for real use-cases.",
+      "OpenCV for practical computer vision.",
+      "Flask backends for AI integrations.",
+      "AWS-ready apps for cloud deployment.",
+      "Java for strong software fundamentals.",
+      "GitHub workflow with clean collaboration.",
+      "DSA-first problem solving mindset.",
+      "OS, DBMS, and CN backed engineering.",
     ],
     movingSkills: [
       "React.js",
@@ -256,13 +267,20 @@ export const defaultPortfolio: PortfolioData = {
       "AI + ML Workflows",
       "System Design",
       "TensorFlow + OpenCV",
+      "TypeScript + Clean Code",
+      "AWS + Cloud Deploy",
+      "Flask + Model Serving",
+      "REST API Security",
+      "Performance Optimization",
+      "DSA + Problem Solving",
     ],
     primaryButtonLabel: "View Projects",
     secondaryButtonLabel: "Contact Me",
     resumeButtonLabel: "Download Resume",
   },
   about: {
-    headline: "Full-Stack Developer | Software Engineer | AI/ML Enthusiast",
+    headline:
+      "Full-Stack Developer | Software Engineer | AI/ML | Java Developer",
     locationLabel: "India",
     highlights: [
       "Full-stack internship delivery",

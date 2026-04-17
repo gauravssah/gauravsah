@@ -66,10 +66,6 @@ export function CertificationsSection({
             <motion.article
               key={`${certificate.id}-${index}`}
               className="group certificate-3d-card w-[260px] shrink-0 overflow-hidden rounded-3xl border border-white/10 bg-[#0b1430]/80"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: (index % 6) * 0.05 }}
               whileHover={{ rotateY: 7, rotateX: -5, y: -8 }}
               style={{ transformStyle: "preserve-3d" }}
             >

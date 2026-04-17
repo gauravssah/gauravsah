@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
 import {
   BrainCircuit,
   Code2,
@@ -10,16 +11,16 @@ import {
 import { assetPath } from "../utils/assetPath";
 
 const floatingSkills = [
-  { icon: Code2, label: "React + Next.js", x: "-18%", y: "16%", delay: 0 },
-  { icon: Server, label: "Node + Express", x: "80%", y: "20%", delay: 0.35 },
-  { icon: Database, label: "MongoDB + APIs", x: "-12%", y: "70%", delay: 0.55 },
-  { icon: BrainCircuit, label: "AI Workflows", x: "78%", y: "74%", delay: 0.2 },
-  { icon: Workflow, label: "System Design", x: "44%", y: "-6%", delay: 0.7 },
+  { icon: Code2, label: "React + Next.js", x: "4%", y: "18%", delay: 0 },
+  { icon: Server, label: "Node + Express", x: "60%", y: "20%", delay: 0.35 },
+  { icon: Database, label: "MongoDB + APIs", x: "5%", y: "67%", delay: 0.55 },
+  { icon: BrainCircuit, label: "AI Workflows", x: "58%", y: "70%", delay: 0.2 },
+  { icon: Workflow, label: "System Design", x: "30%", y: "8%", delay: 0.7 },
   {
     icon: ShieldCheck,
     label: "Clean Architecture",
-    x: "42%",
-    y: "90%",
+    x: "30%",
+    y: "84%",
     delay: 0.45,
   },
 ];
@@ -41,9 +42,34 @@ export function HeroSkillsShowcase({
   focusLine,
   floatingLabels,
 }: HeroSkillsShowcaseProps) {
+  const normalizedLabels = useMemo(() => {
+    const cleaned = floatingLabels
+      .map((label) => label.trim())
+      .filter((label) => label.length > 0);
+    const unique = Array.from(new Set(cleaned));
+    return unique.length > 0
+      ? unique
+      : floatingSkills.map((item) => item.label);
+  }, [floatingLabels]);
+
+  const [rotationOffset, setRotationOffset] = useState(0);
+
+  useEffect(() => {
+    if (normalizedLabels.length <= floatingSkills.length) {
+      setRotationOffset(0);
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setRotationOffset((current) => (current + 1) % normalizedLabels.length);
+    }, 5600);
+
+    return () => window.clearInterval(timer);
+  }, [normalizedLabels]);
+
   const skillsToRender = floatingSkills.map((item, index) => ({
     ...item,
-    label: floatingLabels[index] || item.label,
+    label: normalizedLabels[(index + rotationOffset) % normalizedLabels.length],
   }));
 
   return (
@@ -77,15 +103,15 @@ export function HeroSkillsShowcase({
         </motion.div>
       </div>
 
-      {skillsToRender.map((item) => (
+      {skillsToRender.map((item, index) => (
         <motion.div
-          key={item.label}
-          className="hero-floating-tag absolute z-20 rounded-2xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-white/85 backdrop-blur-md"
+          key={`floating-skill-${index}`}
+          className="hero-floating-tag absolute z-20 max-w-[42%] rounded-2xl border border-white/10 bg-white/10 px-2.5 py-2 text-[11px] leading-tight text-white/85 backdrop-blur-md md:max-w-[11.5rem] md:px-3 md:text-xs"
           style={{ left: item.x, top: item.y }}
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+          animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
           transition={{
-            duration: 4.2,
+            duration: 7.2,
             repeat: Infinity,
             delay: item.delay,
             ease: "easeInOut",
