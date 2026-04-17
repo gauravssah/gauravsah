@@ -89,7 +89,17 @@ img {
     transform: translate3d(0, 0, 0);
 }
 
+.certificate-marquee-reverse {
+    animation: certificateMarquee 120s linear infinite reverse;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
 .certificate-marquee:hover {
+    animation-play-state: paused;
+}
+
+.certificate-marquee-reverse:hover {
     animation-play-state: paused;
 }
 

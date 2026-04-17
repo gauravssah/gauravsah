@@ -20,13 +20,80 @@ export function CertificationsSection({
     image: string;
   } | null>(null);
 
-  const certificates = portfolio.certificates.map((certificate, index) => ({
-    id: `${certificate.title}-${index}`,
-    title: certificate.title,
-    image: assetPath(certificate.image),
-  }));
+  const certificates = (portfolio.certificates ?? []).map(
+    (certificate, index) => ({
+      id: `course-${certificate.title}-${index}`,
+      title: certificate.title,
+      image: assetPath(certificate.image),
+    }),
+  );
+
+  const internshipCertificates = (portfolio.internshipCertificates ?? []).map(
+    (certificate, index) => ({
+      id: `internship-${certificate.title}-${index}`,
+      title: certificate.title,
+      image: assetPath(certificate.image),
+    }),
+  );
 
   const marquee = [...certificates, ...certificates];
+  const internshipMarquee = [
+    ...internshipCertificates,
+    ...internshipCertificates,
+  ];
+
+  const renderCertificateCard = (
+    certificate: { id: string; title: string; image: string },
+    index: number,
+    typeLabel: string,
+    footerText: string,
+  ) => (
+    <motion.article
+      key={`${certificate.id}-${index}`}
+      className="group certificate-3d-card w-[260px] shrink-0 overflow-hidden rounded-3xl border border-white/10 bg-[#0b1430]/80"
+      whileHover={{ rotateY: 7, rotateX: -5, y: -8 }}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <div className="relative h-44 overflow-hidden">
+        <button
+          type="button"
+          onClick={() =>
+            setActiveCertificate({
+              title: certificate.title,
+              image: certificate.image,
+            })
+          }
+          className="relative z-10 block h-full w-full cursor-zoom-in"
+          aria-label={`Open ${certificate.title} certificate`}
+        >
+          <img
+            src={certificate.image}
+            alt={`${certificate.title} certificate`}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+            loading="lazy"
+            onError={(event) => {
+              event.currentTarget.src = assetPath(
+                portfolio.media.certificateFallbackImage,
+              );
+            }}
+          />
+        </button>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/15 to-transparent" />
+      </div>
+
+      <div className="space-y-2 p-4">
+        <p className="flex items-center gap-2 whitespace-nowrap text-[11px] uppercase tracking-[0.2em] text-cyan/75">
+          <Award size={12} /> {typeLabel}
+        </p>
+        <h3 className="line-clamp-2 text-base font-semibold text-white">
+          {certificate.title}
+        </h3>
+        <p className="flex items-center gap-2 text-xs text-white/60">
+          <Sparkles size={12} className="text-cyan" /> {footerText}
+        </p>
+      </div>
+    </motion.article>
+  );
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -57,61 +124,59 @@ export function CertificationsSection({
         description="Industry and course certifications that reflect continuous learning."
       />
 
-      <GlassCard className="relative overflow-hidden p-0">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg" />
-        <div className="certificate-water-bg pointer-events-none absolute inset-0" />
+      <div className="space-y-10">
+        <GlassCard className="relative overflow-hidden p-0">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg" />
+          <div className="certificate-water-bg pointer-events-none absolute inset-0" />
 
-        <div className="certificate-marquee relative flex w-max gap-5 px-5 py-8">
-          {marquee.map((certificate, index) => (
-            <motion.article
-              key={`${certificate.id}-${index}`}
-              className="group certificate-3d-card w-[260px] shrink-0 overflow-hidden rounded-3xl border border-white/10 bg-[#0b1430]/80"
-              whileHover={{ rotateY: 7, rotateX: -5, y: -8 }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <div className="relative h-44 overflow-hidden">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setActiveCertificate({
-                      title: certificate.title,
-                      image: certificate.image,
-                    })
-                  }
-                  className="relative z-10 block h-full w-full cursor-zoom-in"
-                  aria-label={`Open ${certificate.title} certificate`}
-                >
-                  <img
-                    src={certificate.image}
-                    alt={`${certificate.title} certificate`}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    onError={(event) => {
-                      event.currentTarget.src = assetPath(
-                        portfolio.media.certificateFallbackImage,
-                      );
-                    }}
-                  />
-                </button>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/15 to-transparent" />
-              </div>
+          <div className="relative px-5 pt-7">
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan/70">
+              Course Certifications
+            </p>
+            <p className="mt-2 text-sm text-white/65">
+              Academic, technical, and industry learning credentials.
+            </p>
+          </div>
 
-              <div className="space-y-2 p-4">
-                <p className="flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-cyan/75">
-                  <Award size={12} /> Certificate
-                </p>
-                <h3 className="line-clamp-2 text-base font-semibold text-white">
-                  {certificate.title}
-                </h3>
-                <p className="flex items-center gap-2 text-xs text-white/60">
-                  <Sparkles size={12} className="text-cyan" /> Verified learning
-                  milestone
-                </p>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </GlassCard>
+          <div className="certificate-marquee relative mt-4 flex w-max gap-5 px-5 pb-8">
+            {marquee.map((certificate, index) =>
+              renderCertificateCard(
+                certificate,
+                index,
+                "Certificate",
+                "Verified learning milestone",
+              ),
+            )}
+          </div>
+        </GlassCard>
+
+        {internshipCertificates.length ? (
+          <GlassCard className="relative overflow-hidden p-0">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg" />
+            <div className="certificate-water-bg pointer-events-none absolute inset-0" />
+
+            <div className="relative px-5 pt-7">
+              <p className="text-xs uppercase tracking-[0.3em] text-cyan/70">
+                Internship Certificates
+              </p>
+              <p className="mt-2 text-sm text-white/65">
+                Verified internship completion records from industry experience.
+              </p>
+            </div>
+
+            <div className="certificate-marquee-reverse relative mt-4 flex w-max gap-5 px-5 pb-9">
+              {internshipMarquee.map((certificate, index) =>
+                renderCertificateCard(
+                  certificate,
+                  index,
+                  "Internship Certificate",
+                  "Verified internship credential",
+                ),
+              )}
+            </div>
+          </GlassCard>
+        ) : null}
+      </div>
 
       {createPortal(
         <AnimatePresence>

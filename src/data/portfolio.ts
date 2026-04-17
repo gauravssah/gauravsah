@@ -82,6 +82,7 @@ export type PortfolioData = {
   experienceFocusTags: string[];
   education: EducationItem[];
   certificates: Certificate[];
+  internshipCertificates: Certificate[];
   contact: {
     email: string;
     phone: string;
@@ -658,6 +659,29 @@ export const defaultPortfolio: PortfolioData = {
       title: "Modern JavaScript for Beginners + Projects (Udemy)",
       image:
         "/images/certificates/Modern Javascript for Beginners  Javascript Projects udemy.png",
+    },
+  ],
+
+  internshipCertificates: [
+    {
+      title: "Animalslover Internship (1st Term)",
+      image:
+        "/images/intership certificates/Animlslover 1st - Certificate for internship.jpeg",
+    },
+    {
+      title: "Animalslover Internship (2nd Term)",
+      image:
+        "/images/intership certificates/Animlslover 2st - Certificate for internship.jpg",
+    },
+    {
+      title: "Revenue Department Internship",
+      image:
+        "/images/intership certificates/Revenue Department - Certificate for internship.jpg",
+    },
+    {
+      title: "Salesforce Internship",
+      image:
+        "/images/intership certificates/Salesforce - Certificate for internship.jpg",
     },
   ],
 
