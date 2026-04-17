@@ -41,6 +41,11 @@ export function CertificationsSection({
     ...internshipCertificates,
     ...internshipCertificates,
   ];
+  const baseMarqueeDuration = 120;
+  const topMarqueeDuration = internshipCertificates.length
+    ? (baseMarqueeDuration * certificates.length) /
+      internshipCertificates.length
+    : baseMarqueeDuration;
 
   const renderCertificateCard = (
     certificate: { id: string; title: string; image: string },
@@ -138,7 +143,10 @@ export function CertificationsSection({
             </p>
           </div>
 
-          <div className="certificate-marquee relative mt-4 flex w-max gap-5 px-5 pb-8">
+          <div
+            className="certificate-marquee relative mt-4 flex w-max gap-5 px-5 pb-8"
+            style={{ animationDuration: `${topMarqueeDuration}s` }}
+          >
             {marquee.map((certificate, index) =>
               renderCertificateCard(
                 certificate,
@@ -164,7 +172,10 @@ export function CertificationsSection({
               </p>
             </div>
 
-            <div className="certificate-marquee-reverse relative mt-4 flex w-max gap-5 px-5 pb-9">
+            <div
+              className="certificate-marquee-reverse relative mt-4 flex w-max gap-5 px-5 pb-9"
+              style={{ animationDuration: `${baseMarqueeDuration}s` }}
+            >
               {internshipMarquee.map((certificate, index) =>
                 renderCertificateCard(
                   certificate,

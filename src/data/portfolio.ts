@@ -674,7 +674,30 @@ export const defaultPortfolio: PortfolioData = {
         "/images/intership certificates/Animlslover 2st - Certificate for internship.jpg",
     },
     {
-      title: "Revenue Department Internship",
+      title: "Department of Revenue And Land Reforms Department Internship",
+      image:
+        "/images/intership certificates/Revenue Department - Certificate for internship.jpg",
+    },
+    {
+      title: "Salesforce Internship",
+      image:
+        "/images/intership certificates/Salesforce - Certificate for internship.jpg",
+    },
+
+    // Dublicate the same ----
+
+    {
+      title: "Animalslover Internship (1st Term)",
+      image:
+        "/images/intership certificates/Animlslover 1st - Certificate for internship.jpeg",
+    },
+    {
+      title: "Animalslover Internship (2nd Term)",
+      image:
+        "/images/intership certificates/Animlslover 2st - Certificate for internship.jpg",
+    },
+    {
+      title: "Department of Revenue And Land Reforms Department Internship",
       image:
         "/images/intership certificates/Revenue Department - Certificate for internship.jpg",
     },
