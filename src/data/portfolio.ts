@@ -28,6 +28,7 @@ export type ExperienceItem = {
 export type EducationItem = {
   title: string;
   institution: string;
+  affiliation?: string;
   year: string;
   detail: string;
 };
@@ -136,7 +137,8 @@ export const chatbotKnowledge = {
   ],
   experience:
     "4 internships across startup product engineering, government digitization, and Salesforce workflows",
-  education: "B.Tech CSE (AI), Bihar Engineering University (CGPA 8.68)",
+  education:
+    "B.Tech CSE (AI), Government Engineering College, Munger | Bihar Engineering University, Patna | CGPA 8.57",
   internshipHighlights: [
     "Revenue Digitization Intern at Revenue and Land Reforms Department, Government of Bihar",
     "Web Developer Intern (2nd Term) at Animalslover focused on scalable pages and reusable React components",
@@ -520,27 +522,31 @@ export const defaultPortfolio: PortfolioData = {
   education: [
     {
       title: "B.Tech - Computer Science and Engineering (AI)",
-      institution: "Bihar Engineering University, Patna",
+      institution: "Government Engineering College, Munger",
+      affiliation: "Bihar Engineering University, Patna",
       year: "2023 - 2026",
       detail: "Current CGPA: 8.57",
     },
     {
       title: "Diploma - Computer Science and Engineering",
-      institution: "State Board of Technical Education, Bihar",
+      institution: "Government Polytechnic Barauni, Begusarai",
+      affiliation: "State Board of Technical Education, Bihar",
       year: "2019 - 2022",
       detail: "CGPA: 8.55",
     },
     {
       title: "Intermediate (10+2) Science (PCM)",
       institution: "Ram Dayalu Singh College, Muzaffarpur",
+      affiliation: "BSEB, Patna",
       year: "2017 - 2019",
-      detail: "69%",
+      detail: "Marks: 69%",
     },
     {
       title: "Matriculation",
       institution: "Board Exam",
+      affiliation: "BSEB, Patna",
       year: "2015 - 2017",
-      detail: "76.6%",
+      detail: "Marks: 76.6%",
     },
   ],
 

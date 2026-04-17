@@ -28,7 +28,12 @@ export function EducationSection({ portfolio }: EducationSectionProps) {
             <h3 className="mt-3 text-xl font-semibold text-white">
               {item.title}
             </h3>
-            <p className="mt-1 text-sm text-white/70">{item.institution}</p>
+            {item.affiliation ? (
+              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-cyan/70">
+                {item.affiliation}
+              </p>
+            ) : null}
+            <p className="mt-1 text-sm text-white/80">{item.institution}</p>
             <p className="mt-4 text-sm text-muted">{item.detail}</p>
           </GlassCard>
         ))}
