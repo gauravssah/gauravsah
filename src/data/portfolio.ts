@@ -545,12 +545,20 @@ export const defaultPortfolio: PortfolioData = {
   ],
 
   certificates: [
+    // NPTEL
     {
       title:
         "NPTEL Online Certification – Introduction to Operating Systems (Elite Top 5%)",
       image:
         "/images/certificates/NPTEL Online Certification – Introduction to Operating Systems.png",
     },
+    {
+      title: "NPTEL Online Certification – Cloud Computing",
+      image:
+        "/images/certificates/NPTEL Online Certification – Cloud Computing.png",
+    },
+
+    // takeUforward
     {
       title: "Computer Networks – takeUforward",
       image: "/images/certificates/Certificate Computer Networks tuf.png",
@@ -559,86 +567,89 @@ export const defaultPortfolio: PortfolioData = {
       title: "Operating System – takeUforward",
       image: "/images/certificates/Operating System TUF.png",
     },
-    {
-      title: "NPTEL Online Certification – Cloud Computing",
-      image:
-        "/images/certificates/NPTEL Online Certification – Cloud Computing.png",
-    },
 
-    // Linux Essentials (2 files)
+    // Cisco Networking Academy - Linux Essentials
     {
       title: "Linux Essentials Certification – Cisco Networking Academy",
       image:
         "/images/certificates/Linux Essentials Certification Certificates.png",
     },
     {
-      title: "Linux Essentials – Statement of Achievement",
+      title:
+        "Linux Essentials – Statement of Achievement (Cisco Networking Academy)",
       image:
         "/images/certificates/Linux Essentials Certification Statement of achivement.png",
     },
 
-    // Linux Unhatched (2 files)
+    // Cisco Networking Academy - Linux Unhatched
     {
       title: "Linux Unhatched – Cisco Networking Academy",
       image: "/images/certificates/Linux Unhatched Certificate.png",
     },
     {
-      title: "Linux Unhatched – Statement of Achievement",
+      title:
+        "Linux Unhatched – Statement of Achievement (Cisco Networking Academy)",
       image: "/images/certificates/Statement of Achievement.png",
     },
 
-    {
-      title: "Startup India Learning Program – Invest India",
-      image: "/images/certificates/Startup India Learning Program.png",
-    },
-    {
-      title: "Contentstack for Developers + Launch Certification",
-      image: "/images/certificates/Contentstack for Developers + Launch.png",
-    },
+    // Cisco
     {
       title: "Cisco Cybersecurity Essentials (AICTE Internship)",
       image:
         "/images/certificates/AICTE-CISCO INTERNSHIP_DST BIHAR_CYBERSECURITY ESSENTIALS.png",
     },
 
-    // AWS (2 files)
+    // Internshala
     {
       title: "Cloud Computing with AWS – Internshala",
       image: "/images/certificates/Cloud computing with AWS.png",
     },
     {
-      title: "Cloud Computing with AWS Training",
+      title: "Cloud Computing with AWS Training – Internshala",
       image: "/images/certificates/Cloud computing with AWS Training.png",
     },
 
+    // LinkedIn Learning
     {
       title: "What Is Generative AI? – LinkedIn Learning",
       image: "/images/certificates/What Is Generative AI Linkedin.png",
     },
 
-    // Udemy Courses
+    // Contentstack
     {
-      title: "Learn Complete Front-End Web Development Course (2022)",
+      title: "Contentstack for Developers + Launch Certification",
+      image: "/images/certificates/Contentstack for Developers + Launch.png",
+    },
+
+    // Invest India
+    {
+      title: "Startup India Learning Program – Invest India (upGrad)",
+      image: "/images/certificates/Startup India Learning Program.png",
+    },
+
+    // Udemy
+    {
+      title: "Learn Complete Front-End Web Development Course (2022) – Udemy",
       image:
         "/images/certificates/Learn Complete Front-End Web Development Course Udemy.png",
     },
     {
-      title: "Advanced Web Developer Course – Beginner to Advanced",
+      title: "Advanced Web Developer Course – Beginner to Advanced (Udemy)",
       image:
         "/images/certificates/Advanced Web Developer Course - Beginner to Advanced.png",
     },
     {
-      title: "The Complete ReactJs Course – Basics to Advanced",
+      title: "The Complete ReactJs Course – Basics to Advanced (Udemy)",
       image:
         "/images/certificates/The Complete ReactJs Course - Basics to Advanced Udemy.png",
     },
     {
-      title: "JavaScript – Basics to Advanced Step by Step",
+      title: "JavaScript – Basics to Advanced Step by Step (Udemy)",
       image:
         "/images/certificates/JavaScript - Basics to Advanced step by step udemy.png",
     },
     {
-      title: "Modern JavaScript for Beginners + Projects",
+      title: "Modern JavaScript for Beginners + Projects (Udemy)",
       image:
         "/images/certificates/Modern Javascript for Beginners  Javascript Projects udemy.png",
     },
