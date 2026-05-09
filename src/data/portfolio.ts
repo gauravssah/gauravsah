@@ -526,7 +526,7 @@ export const defaultPortfolio: PortfolioData = {
       institution: "Government Engineering College, Munger",
       affiliation: "Bihar Engineering University, Patna",
       year: "2023 - 2026",
-      detail: "Current CGPA: 8.57",
+      detail: "Current CGPA: 8.68",
     },
     {
       title: "Diploma - Computer Science and Engineering",
@@ -540,7 +540,7 @@ export const defaultPortfolio: PortfolioData = {
       institution: "Ram Dayalu Singh College, Muzaffarpur",
       affiliation: "BSEB, Patna",
       year: "2017 - 2019",
-      detail: "Marks: 69%",
+      detail: "Marks: 69.0%",
     },
     {
       title: "Matriculation",
